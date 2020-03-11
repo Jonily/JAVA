@@ -1,6 +1,5 @@
 import java.util.Scanner;
 public class meThon {
-
     public static void main (String[]args){
         System.out.println("请输入数字：");
         Scanner sc = new Scanner(System.in);
