@@ -1,5 +1,5 @@
 import java.util.Scanner;
-public class operNum {
+public class operNum {/*
     public static void main(String[] args) {
         System.out.println("输入数字的个数为：");
         Scanner sc = new Scanner (System.in);
@@ -27,10 +27,10 @@ public class operNum {
         double i = e + f + g;
         return i ;
     }
-}
-/*
+}*/
 
-    public static void main1(String[] args) {
+
+    public static void main(String[] args) {
         System.out.println("输入数字的个数为：");
         Scanner sc = new Scanner (System.in);
         int k = sc.nextInt();
@@ -67,4 +67,4 @@ public class operNum {
         return i ;
     }
 }
-*/
+
