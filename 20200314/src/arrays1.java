@@ -70,11 +70,6 @@ public class arrays1 {
 }*/
 
 
-
-
-
-
-
     /*
     public static void main(String[] args) {
         int [] arrays = new int [100];
