@@ -1,6 +1,6 @@
 import java.util.Scanner;
 public class frogSeat {
-    public static void main(String[] args) {
+    /*public static void main(String[] args) {
         System.out.println("输入青蛙要跳的台阶数：");
         Scanner sc = new Scanner(System.in);
         int n = sc.nextInt();
@@ -25,13 +25,12 @@ public class frogSeat {
         }
      }
 }
+*/
 
 
 
 
 
-
-    /*
         public static void main(String[] args) {
             System.out.println("输入青蛙要跳的台阶数：");
             Scanner sc = new Scanner(System.in);
@@ -43,9 +42,9 @@ public class frogSeat {
             int i = 1 ;
             int j = 2 ;
             int k = 0 ;
-            if (n==1){
-                return n ;
-            }else if(n==2) {
+            if (n==0){
+                return 0 ;
+            }else if(n<=2) {
                 return n ;
             } else{
                 for (int a = 3 ; a<=n ; a++){
@@ -56,7 +55,7 @@ public class frogSeat {
                 return k ;
             }
         }
-    }*/
+    }
 
 
 
