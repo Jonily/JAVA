@@ -10,16 +10,19 @@ public class arrays1 {
         for (i = 0; i < n; i++) {
             arrays[i] = sc.nextInt();
         }
-        int ret = sum(n,arrays);
-        System.out.println("输入数字求和为："+ret);
+        double j = sum(n,arrays);
+        System.out.println("输入数字的平均值为："+j);
     }
-    public static int sum(int n,int[] arrays){
+    public static double sum(int n,int[] arrays){
         int i = 0;
         int ret = 0;
+        int j = 0;
         for (i = 0; i< n; i++) {
         ret = ret + arrays[i];
         }
-        return ret ;
+        System.out.println("输入数字求和为："+ret);
+        j = ret/n;
+        return j ;
  }
 }
 
