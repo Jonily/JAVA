@@ -3,7 +3,6 @@
  * @Author HuangZhuoLin
  * @Date 2020/3/15 15:25
  */
-
 import java.util.Arrays;
 public class search {
     public static void main(String[] args) {
@@ -11,12 +10,12 @@ public class search {
          bubbleSort(array);
         System.out.println(Arrays.toString(array));
     }
-
     public static void bubbleSort(int[] array){
         int i = 0 ;
         int j = 0 ;
         boolean bit = false;
         for (i = 0 ;i<array.length-1;i++){//趟数
+            bit = false;
             for(j = 0 ; j<array.length-1-i;j++){
                 if(array[j]>array[j+1]){
                     int tmp = array[j];
@@ -28,7 +27,6 @@ public class search {
         }
         if(bit == false)
         return ;
-        System.out.println(Arrays.toString(array));
     }
 }
 
