@@ -102,13 +102,13 @@ public class Arrays {
         for(int i = 0; i<arrays1.length; i++){
             arrays1[i] = sc.nextInt();
         }
-        int[] ret = copyArray(arrays1);
+        int[] ret = copyOf(arrays1);
         System.out.println("拷贝后：");
         for (int x:ret) {
             System.out.print(" "+x+" ");
         }
     }
-    public static int[] copyArray(int[]a){
+    public static int[] copyOf(int[]a){
         int[] ret = new int[a.length];
         for(int i = 0; i<ret.length; i++){
             ret[i]=a[i];
