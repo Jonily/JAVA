@@ -74,6 +74,7 @@ public class Car {
         System.out.println("汽车长度: "+car.carlength);
     }
 }
+/*
 public  class carTeam {
     private Car carnum;
     private Car carlead;
@@ -174,4 +175,5 @@ public  class carTeam {
     }
 }
 
+*/
 
