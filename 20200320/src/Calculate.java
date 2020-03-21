@@ -6,8 +6,8 @@
 import java.util.Scanner;
 import static java.lang.Math.PI;
 abstract class Shape {
-    public abstract Double shapeC();
-    public abstract Double shapeS();
+    public abstract double shapeC();
+    public abstract double shapeS();
 }
 class Circle extends Shape {
     private double r;
@@ -20,10 +20,10 @@ class Circle extends Shape {
     public void setR(double r) {
         this.r = r;
     }
-    public Double shapeC(){
+    public double shapeC(){
         return PI*2*r;
     }
-    public Double shapeS(){
+    public double shapeS(){
         return PI*r*r;
     }
 }
@@ -38,10 +38,10 @@ class Square extends Shape {
     public void setF(double f) {
         this.f = f;
     }
-    public Double shapeC(){
+    public double shapeC(){
         return 4*f;
     }
-    public Double shapeS(){
+    public double shapeS(){
         return Math.pow(f,2);
     }
 }
@@ -72,10 +72,10 @@ class Triangle extends Shape {
     public void setC(double c) {
         this.c = c;
     }
-    public Double shapeC(){
+    public double shapeC(){
         return a+b+c;
     }
-    public Double shapeS(){
+    public double shapeS(){
         double s = (a+b+c)/2.0;
         return Math.sqrt(s*(s-a)*(s-b)*(s-c));
     }
@@ -103,10 +103,10 @@ class Rectangle extends Shape {
     public void setW(double w) {
         this.w = w;
     }
-    public Double shapeC(){
+    public double shapeC(){
         return (l+w)*2;
     }
-    public Double shapeS(){
+    public double shapeS(){
         return l*w;
     }
 }
