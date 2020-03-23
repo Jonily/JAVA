@@ -1,11 +1,11 @@
-import java.util.Arrays;
+
 
 /**
- * @Description:
+ * @Description: 顺序表
  * @Author HuangZhuoLin
  * @Date 2020/3/22 23:02
  */
-
+import java.util.Arrays;
 public class MyArrayList {
     private int[] array;
     private int useSize;//顺序表中已经被占用的数据个数
