@@ -1,10 +1,10 @@
 /**
- * @Description:
+ * @Description:  动物抽象类
  * @Author HuangZhuoLin
  * @Date 2020/3/24 16:34
  */
 
-public abstract class Animal {
+ abstract class Animal {
     public Animal(String name, int age) {
     }
 
