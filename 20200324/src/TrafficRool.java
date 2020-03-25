@@ -1,10 +1,10 @@
 /**
- * @Description:
+ * @Description:  抽象类
  * @Author HuangZhuoLin
  * @Date 2020/3/24 16:52
  */
 
-public abstract class TrafficRool {
+ abstract class TrafficRool {
 
     public String getCarNum() {
         return carNum;
