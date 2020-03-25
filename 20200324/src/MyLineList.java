@@ -1,5 +1,5 @@
 /**
- * @Description:
+ * @Description: 单链表
  * @Author HuangZhuoLin
  * @Date 2020/3/24 23:38
  */
@@ -139,18 +139,42 @@ class Node{
         Node vel = prev.getNext();
         prev.setNext(vel.getNext());
     }
+    //删除所有值为key的节点
+    public void removeAllKey(int key){
+        Node prev = this.head;
+        Node cur = prev.getNext();
+        while(cur!=null){
+            if(cur.getData() == key){
+                prev.setNext(cur.getNext());
+            }else{
+                prev = cur;
+
+            }
+            cur = cur.getNext();
+        }
+        if(this.head.getData() == key){
+            this.head = this.head.getNext();
+        }
+    }
 }
 class Demo{
     public static void main(String[] args) {
         MyLineList myLineList = new MyLineList();
         myLineList.addLast(2);
-        myLineList.addLast(3);
+        myLineList.addLast(2);
         myLineList.addLast(4);
+        myLineList.addLast(1);
+
         myLineList.addFirst(5);
         myLineList.addIndex(2,10);
 
-        System.out.print(myLineList.contains(10));
-        myLineList.remove(3);
+        System.out.println(myLineList.contains(10));
+        myLineList.disPlay();
+
+        myLineList.remove(4);
+        myLineList.removeAllKey(2);
+        System.out.println();
+
         myLineList.disPlay();
 
     }
