@@ -156,26 +156,71 @@ class Node{
             this.head = this.head.getNext();
         }
     }
+    //清空单链表
+    public void clear(){
+        this.head = null;/*
+        while(this.head.getNext()!=null){
+            Node del = this.head.getNext();
+            this.head.setNext(del.getNext());
+        }
+        this.head = null;*/
+    }
+
 }
 class Demo{
     public static void main(String[] args) {
         MyLineList myLineList = new MyLineList();
-        myLineList.addLast(2);
-        myLineList.addLast(2);
-        myLineList.addLast(4);
         myLineList.addLast(1);
-
-        myLineList.addFirst(5);
-        myLineList.addIndex(2,10);
-
-        System.out.println(myLineList.contains(10));
+        myLineList.addLast(2);
+        myLineList.addLast(3);
+        myLineList.addLast(3);
+        myLineList.addLast(3);
+        myLineList.addLast(6);
+        myLineList.addLast(7);
+        myLineList.addFirst(10);
+        myLineList.addIndex(2,99);
+        System.out.println("三种方法插入后结果：");
         myLineList.disPlay();
-
-        myLineList.remove(4);
-        myLineList.removeAllKey(2);
         System.out.println();
-
+        System.out.println("单链表长度：");
+        System.out.println(myLineList.size());
+        System.out.println("查找是否存在10这个数据");
+        System.out.println(myLineList.contains(10));
+        System.out.println("删除单链表里面的数据10之后：");
+        myLineList.remove(10);
         myLineList.disPlay();
-
+        System.out.println();
+        System.out.println("删除单链表里面所有的3之后：");
+        myLineList.removeAllKey(3);
+        myLineList.disPlay();
+        System.out.println();
+        System.out.println("清空单链表之后打印：");
+        myLineList.clear();
+        System.out.println();
+        myLineList.disPlay();
     }
 }
+   /* public Node findKthToTail(int k) {
+        if(k <= 0 || this.head==null) {
+            return null;
+        }
+        Node fast = this.head;
+        Node slow = this.head;
+        //1、让fast先走k-1步
+        for (int i = 0;i < k-1;i++){
+            if(fast.getNext()!=null){
+                fast = fast.getNext();
+            }else {
+                System.out.println("没有这个节点！");
+            }
+        }
+
+        //2、让两个引用 一起走  直到 fast.next == null
+        // slow 所指的位置就是倒数第K个节点
+        while (fast.getNext()==null){
+            fast = fast.getNext();
+            slow = slow.getNext();
+        }
+        return slow;
+
+    }*/
