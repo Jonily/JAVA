@@ -125,7 +125,21 @@ public class SingleLineList {
     public void clear(){
         this.head = null;
     }
-    
+    public void turnRround(){
+        Node cur = this.head;
+
+        Node prev = null;
+        while (cur != null){
+            Node vel = cur.getNext();
+            if(vel == null){
+                this.head = cur;
+            }
+            cur.setNext(prev);
+            prev = cur;
+            cur = vel;
+
+        }
+    }
 
 }
 class Test{
@@ -148,8 +162,9 @@ class Test{
         singleLineList.removeAllkey(100);
         singleLineList.display();
         System.out.println("=============");
+        singleLineList.turnRround();
 
-        singleLineList.clear();
+        //singleLineList.clear();
         singleLineList.display();
 
 
