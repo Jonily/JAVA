@@ -153,13 +153,21 @@ class Node{
     }
     //输出倒数第K个节点
      public Node findnode(int k){
+        if(this.head == null){
+            return null;
+
+        }
         Node fast = this.head;
         Node slow = this.head;
-        if(k<0 || k>size()){
+        if(k<0){
             return null;
         }
         for(int i = 0; i<k-1; i++){
+           if(fast.getNext()!=null){
             fast = fast.getNext();
+           }else {
+               throw new RuntimeException("没有这个节点！");
+           }
         }
         while (fast.getNext()!=null){
             fast = fast.getNext();
@@ -167,10 +175,52 @@ class Node{
         }
         return slow;
      }
+     public Node inTurn(int key){
+        Node as = null;
+        Node ae = null;
+        Node bs = null;
+        Node be = null;
+        Node cur = this.head;
+        while (cur!=null){
+            if(cur.getData()<key){
+                if(as == null){
+                    as = cur;
+                    ae = as;
+                }else {
+                    ae.setNext(cur);
+                    ae = ae.getNext();
+                }
+            }else {
+                if(bs == null){
+                    bs = cur;
+                    be = as;
+                }else {
+                    be.setNext(cur);
+                    be = be.getNext();
+                }
+            }
+            cur = cur.getNext();
+        }
+        if (as==null){
+            return bs;
+        }
+        ae.setNext(bs);
+        if(bs!=null){
+            be.setNext(null);
+        }
 
+        return as;
+     }
+     public void display1(Node a) {
+         Node cur = a;
+         while (cur != null) {
+             System.out.print(cur.getData() + " ");
+             cur = cur.getNext();
+         }
+     }
 }
 public class LineListTest{
-    public static void main(String[] args) {
+    public static  void main(String[] args) {
         SingleLineList singleLineList = new SingleLineList();
         singleLineList.addHeadList(10);
         singleLineList.addLastList(20);
@@ -194,11 +244,9 @@ public class LineListTest{
         //singleLineList.clear();
         singleLineList.display();
         System.out.println();
-
-        System.out.println(singleLineList.findnode(2).getData());
-
-
+        singleLineList.display1(singleLineList.inTurn(30));
     }
+  }
 
-}
+
 
