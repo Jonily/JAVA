@@ -4,7 +4,8 @@
  * @Date 2020/3/28 8:45
  */
 class Node{
-
+    private int data;
+    private Node next;
 
     public int getData() {
         return data;
@@ -14,8 +15,6 @@ class Node{
         this.data = data;
     }
 
-    private int data;
-
     public Node getNext() {
         return next;
     }
@@ -24,7 +23,6 @@ class Node{
         this.next = next;
     }
 
-    private Node next;
     public Node(int data){
         this.data = data;
         this.next = null;
@@ -218,33 +216,118 @@ class Node{
              cur = cur.getNext();
          }
      }
+     //在一个排序的链表中，存在重复的结点，请删除该链表中重复的结点，返回链表头指针。
+     public Node removeRepeat(){
+        Node node = new Node(0);
+        Node cur = this.head;
+        Node tmp = node;
+        while (cur!=null){
+            if(cur.getNext()!=null && cur.getData()==cur.getNext().getData()){
+                while (cur.getNext()!=null && cur.getData()==cur.getNext().getData()){
+                    cur = cur.getNext();
+                }
+                cur = cur.getNext();
+            }else{
+                tmp.setNext(cur);
+                tmp = cur;
+                cur = cur.getNext();
+            }
+        }
+        tmp.setNext(null);
+        return node.getNext();
+     }
+     //链表的回文结构
+     public boolean HuiWen(){
+        Node fast = this.head;
+        Node slow = this.head;
+        while (fast!=null && fast.getNext()!=null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+        }
+        Node cur = slow.getNext();
+        while (cur!=null){
+            Node curNext = cur.getNext();
+            cur.setNext(slow);
+            slow = cur;
+            cur = curNext;
+        }
+        while (slow != this.head){
+            if(slow.getData()!=this.head.getData()){
+                return false;
+            }
+            if(slow == this.head.getNext()){
+                return true;
+            }
+            slow = slow.getNext();
+            this.head = this.head.getNext();
+        }
+        return true;
+     }
 }
 public class LineListTest{
+    public static void getNode(Node headA,Node headB ){
+        headA.getNext().setNext(headB.getNext());
+    }
+    public static Node getIntersectionNode(Node headA,Node headB ){
+        if(headA == null|| headB ==null){
+            return null;
+        }
+        Node pl = headA;
+        Node ps = headB;
+        int lenA = 0;
+        int lenB = 0;
+        while (pl!=null){
+            lenA++;
+            pl=pl.getNext();
+        }
+        while (ps!=null){
+            lenB++;
+            ps=ps.getNext();
+        }
+        pl = headA;
+        ps = headB;
+        int len =lenA-lenB;
+        if(len < 0){
+            ps = headA;
+            pl = headB;
+            len = lenB-lenA;
+        }
+        while (len>0){
+            pl = pl.getNext();
+            len--;
+        }
+        while (pl != ps){
+            pl = pl.getNext();
+            ps = ps.getNext();
+        }
+        if(pl!=null && ps!=null && pl==ps){
+            return pl;
+        }
+        return  null;
+
+    }
+    //输入两个链表，找出它们的第一个公共结点
+    /*public Node findPublicNode(Node A,Node B){
+
+    }*/
     public static  void main(String[] args) {
         SingleLineList singleLineList = new SingleLineList();
-        singleLineList.addHeadList(10);
+        SingleLineList singleLineList1 = new SingleLineList();
+        singleLineList.addLastList(10);
         singleLineList.addLastList(20);
         singleLineList.addLastList(30);
-        singleLineList.addLastList(11);
-        singleLineList.addLastList(100);
-        singleLineList.addLastList(100);
-        singleLineList.addIndex(2,60);
-        singleLineList.display();
-        System.out.println();
-        System.out.println(singleLineList.contain(60));
-        /*singleLineList.remove(60);
-        System.out.println(singleLineList.contain(60));*/
-        singleLineList.display();
-        System.out.println();
-        singleLineList.removeAllkey(100);
-        singleLineList.display();
-        System.out.println("=============");
-        singleLineList.turnRround();
+        singleLineList.addLastList(20);
+        singleLineList.addLastList(10);
 
-        //singleLineList.clear();
-        singleLineList.display();
-        System.out.println();
-        singleLineList.display1(singleLineList.inTurn(30));
+        singleLineList1.addLastList(90);
+        singleLineList1.addLastList(80);
+        singleLineList1.addLastList(70);
+        singleLineList1.addLastList(60);
+        singleLineList1.addLastList(50);
+        getNode(singleLineList.head,singleLineList1.head);
+        Node ret = getIntersectionNode(singleLineList.head,singleLineList1.head);
+        System.out.println(ret.getData());
+
     }
   }
 
