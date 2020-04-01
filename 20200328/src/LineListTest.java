@@ -173,6 +173,7 @@ class Node{
         }
         return slow;
      }
+     //分割单链表
      public Node inTurn(int key){
         Node as = null;
         Node ae = null;
@@ -262,6 +263,43 @@ class Node{
             this.head = this.head.getNext();
         }
         return true;
+     }
+     //判断单链表是否有环
+     public boolean hasCycle(){
+        Node fast = this.head;
+        Node slow = this.head;
+        while (fast!=null && fast.getNext()!=null){
+            fast = fast.getNext().getNext();
+            slow = slow.getNext();
+            if (fast == slow){
+                break;
+            }
+        }
+        if(fast == null||fast.getNext()==null){
+            return false;
+        }
+        return true;
+     }
+     //找到环的入口
+     public Node decletCycle(){
+         Node fast = this.head;
+         Node slow = this.head;
+         while (fast!=null && fast.getNext()!=null){
+             fast = fast.getNext().getNext();
+             slow = slow.getNext();
+             if (fast == slow){
+                 break;
+             }
+         }
+         if(fast == null||fast.getNext()==null){
+             return null;
+         }
+         slow = this.head;
+         while (slow!=fast){
+             fast = fast.getNext();
+             slow = slow.getNext();
+     }
+         return slow;
      }
 }
 public class LineListTest{
