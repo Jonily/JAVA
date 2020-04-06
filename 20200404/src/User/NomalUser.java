@@ -1,6 +1,8 @@
 package User;
 
 
+import Operation.*;
+
 import java.util.Scanner;
 
 /**
@@ -13,6 +15,14 @@ public class NomalUser extends User {
 
     public NomalUser(String name){
         super(name);
+
+        this.Operations = new IOperation[] {
+                new ExitOperation(),
+                new FindOperation(),
+                new BorrowOperation(),
+                new ReturnOperation()
+
+        };
 
     }
 

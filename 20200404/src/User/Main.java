@@ -34,8 +34,11 @@ public class Main {
         BookList bookList = new BookList();
         //登录
         User user = login();
-        int choice = user.menu();
-        //根据选择 确定调用的方法
+        while (true) {
+            int choice = user.menu();
+            //根据选择 确定调用的方法
+            user.doOperation(choice, bookList);
+        }
 
 
 

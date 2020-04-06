@@ -1,4 +1,6 @@
 package User;
+import Operation.*;
+
 import java.util.Scanner;
 /**
  * @Description:
@@ -10,6 +12,15 @@ public class AdminUser extends User {
 
     public AdminUser(String name){
         super(name);
+        //存放操作
+        this.Operations = new IOperation[] {
+                new ExitOperation(),
+                new FindOperation(),
+                new AddOperation(),
+                new DelOperation(),
+                new DisplayOperation()
+
+        };
 
     }
 
