@@ -1,6 +1,4 @@
 package Operation;
-
-
 import Book.BookList;
 
 /**
@@ -10,7 +8,5 @@ import Book.BookList;
  */
 
 public interface IOperation {
-    public void work(BookList bookList){
-
-    }
+    public void work(BookList bookList);
 }

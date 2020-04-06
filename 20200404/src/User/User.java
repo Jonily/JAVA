@@ -7,8 +7,12 @@ package User;
  */
 
 abstract public  class User {
+    public User(String name){
+        this.name = name;
+    }
 
     public String name;
+    //如果没有这个方法，那么不可以通过user访问menu（）
     public abstract int menu();
 
 }

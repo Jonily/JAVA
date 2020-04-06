@@ -12,6 +12,12 @@ class Person implements Cloneable{
         this.age = age;
     }
 
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+
     @Override
     public String toString() {
         return "Person{" +
@@ -20,8 +26,8 @@ class Person implements Cloneable{
     }
 }
 public class TestDemo {
-    public static void main(String[] args) {
-        Person person = new Person();
+    public static void main(String[] args) throws CloneNotSupportedException {
+        Person person = new Person(2);
         person.clone();
     }
 }
