@@ -9,10 +9,6 @@ package Book;
 public class BookList {
 
     private Book[] books;
-    public Book getBook(int pos){
-        return books[pos];
-    }
-
     private  int usedSize;
 
     public int getUsedSize() {
@@ -25,7 +21,9 @@ public class BookList {
     public void setBooks(int pos,Book book){
         this.books[pos] = book;
     }
-
+    public Book getBook(int pos){
+        return books[pos];
+    }
 
     public  BookList(){
         this.books = new Book[10];
