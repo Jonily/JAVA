@@ -98,6 +98,10 @@ public class Porker {
         System.out.println(players.get(1));
         System.out.println("玩家3 的手牌：");
         System.out.println(players.get(2));
+        System.out.println("发牌后的牌堆：");
+        System.out.println(Porker);
+
+
 
 
 
