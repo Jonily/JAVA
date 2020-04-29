@@ -9,9 +9,6 @@ import java.util.Arrays;
  */
 
 public class Heap {
-
-
-
     public static void shiftDown(int[] array, int size,int index){
         int parent = index;
         //根据父节点下标，先找到左子树下标
@@ -43,14 +40,14 @@ public class Heap {
     public static void creatHeap(int[] array,int size) {
         //从后向前遍历，从最后一个非叶子节点出发，依次进行向下调整
         //size-1最后一个节点，再-1/2是找到最后一个节点的父节点
-        for(int i = (size - 1 -1)/2; i > 0 ;i--){
+        for(int i = (size-1-1)/2; i >= 0; i--){
             shiftDown(array,size,i);
 
         }
     }
 
     public static void main(String[] args) {
-        int[] array = {9,5,2,7,3,6,8};
+        int[] array = {3,7,4,8,3,2,9};
         creatHeap(array,array.length);
         System.out.print(Arrays.toString(array));
     }

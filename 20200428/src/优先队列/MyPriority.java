@@ -29,9 +29,9 @@ public class MyPriority {
             //比较当前child和parent之间的大小关系看看是否符合大堆
             //再去找下右子树对应的节点
             if(array[parent] < array[child]){//child合法并且如果右子树大于根
-                int tmp = array[parent];
-                array[parent] = array[child];
-                array[child] = tmp;
+                int tmp = array[child];
+                array[child] = array[parent];
+                array[parent] = tmp;
             } else{
                 //当前child和parent的关系符合大堆要求，调整完毕
                 break;
@@ -59,7 +59,7 @@ public class MyPriority {
     private void shifDown(int[] array,int size,int index){
         int parent = index;
         //根据父节点下标，先找到左子树下标
-        int child = 2*parent+1;
+        int child = 2 * parent + 1;
 
         while (child < size){
             //再去找下右子树对应的节点
@@ -79,7 +79,7 @@ public class MyPriority {
             }
             //下次循环之前，需要先更新parent和child
             parent = child;
-            child = 2*parent + 1;
+            child = 2 * parent + 1;
 
         }
     }
@@ -95,6 +95,17 @@ public class MyPriority {
     }
 
     public static void main(String[] args) {
-        
+        MyPriority myPriorityQueue = new MyPriority();
+        myPriorityQueue.offer(5);
+        myPriorityQueue.offer(6);
+        myPriorityQueue.offer(9);
+        myPriorityQueue.offer(1);
+        myPriorityQueue.offer(3);
+        myPriorityQueue.offer(0);
+        myPriorityQueue.offer(7);
+        while (!myPriorityQueue.isEmpty()){
+            Integer cur = myPriorityQueue.poll();
+            System.out.print(cur+" ");
+        }
     }
 }
