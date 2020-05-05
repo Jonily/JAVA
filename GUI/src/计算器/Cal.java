@@ -21,7 +21,7 @@ public class Cal extends JFrame {
     JButton[] rightBts;//右边面板上的按钮数组（4个按钮对象）
 
     public Cal(){
-        this.setSize(400,500);
+        this.setSize(400,470);
         this.setTitle("计算器");
         this.setLayout(null);
         init();
@@ -45,16 +45,10 @@ public class Cal extends JFrame {
         equalsBt.setSize(70,108);
         equalsBt.setLocation(300,299);
         this.add(equalsBt);
-
-
         //左边面板的摆放和面板上控件的摆放
         initLeftPanel();
-
-
         //中间面板的摆放和面板上控件的摆放
         initCenterPanel();
-
-
         //右边面板的摆放和面板上控件的摆放
         initRightPanel();
     }
