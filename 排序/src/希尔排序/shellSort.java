@@ -1,5 +1,7 @@
 package 希尔排序;
 
+import java.util.Arrays;
+
 /**
  * @Description:
  * @Author HuangZhuoLin
@@ -33,5 +35,12 @@ public class shellSort {
         }
 
     }
+
+    public static void main(String[] args) {
+        int[] a ={1,6,9,52,12346,46548446};
+        shellSort(a);
+        System.out.print(Arrays.toString(a));
+    }
+
 
 }
