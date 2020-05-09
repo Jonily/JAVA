@@ -2,14 +2,37 @@ package 菜单;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 
 public class MenuTest extends JFrame implements ActionListener {
-   //定义有关菜单的对象
+
+    private JButton redBt, greenBt, blueBt;
+    //定义有关菜单的对象
     JMenuBar menuBar;//菜单栏
     JMenu colorMenu;//设置窗体背景颜色的菜单
     JMenuItem[] colorMenuItems;//设置窗体背景颜色的菜单项数组
+
+
+    //初始化按钮的方法
+    private void initButton(){
+        this.setLayout(null);
+        redBt = new JButton("红色");
+        redBt.setSize(60, 30);
+        redBt.setLocation(30, 30);
+        this.add(redBt);
+        greenBt = new JButton("绿色");
+        greenBt.setSize(60, 30);
+        greenBt.setLocation(120, 30);
+        this.add(greenBt);
+        blueBt = new JButton("蓝色");
+        blueBt.setSize(60, 30);
+        blueBt.setLocation(210, 30);
+        this.add(blueBt);
+
+        redBt.addActionListener(this);
+        greenBt.addActionListener(this);
+        blueBt.addActionListener(this);
+    }
 
 
     //初始化菜单的方法
@@ -21,6 +44,8 @@ public class MenuTest extends JFrame implements ActionListener {
         for(int i = 0; i < 3; i++ ){
             colorMenuItems[i] = new JMenuItem(colors[i]);
             //初始化每个菜单项，给菜单项进行文本赋值
+            colorMenuItems[i].addActionListener(this);
+            //注册事件源菜单项和事件处理项
             colorMenu.add(colorMenuItems[i]);
             //以菜单为对象，调用方法添加菜单包含的菜单项
         }
@@ -33,6 +58,8 @@ public class MenuTest extends JFrame implements ActionListener {
     public MenuTest(){
         this.setSize(300,300);
         this.setTitle("菜单实例");
+        initMenu();
+        initButton();
         this.setVisible(true);
 
     }
@@ -51,14 +78,7 @@ public class MenuTest extends JFrame implements ActionListener {
 
             }else{
 
-                if(item.getText().equals("绿色")){
-
                     this.getContentPane().setBackground(Color.green);
-
-                }else{
-
-                }
-
             }
 
         }
@@ -68,6 +88,7 @@ public class MenuTest extends JFrame implements ActionListener {
 
 
     public static void main(String[] args) {
+        MenuTest menuTest = new MenuTest();
 
     }
 }
