@@ -36,7 +36,7 @@ public class BinarySearTree {
      * @param key
      * @return true 表示插入成功, false 表示插入失败
      */
-    public Node insert(int key,int value) {
+    public Node insert1(int key,int value) {
         //1、如果本身是空树，直接让root指向新节点
         if (root == null) {
             root = new Node(key,value);
@@ -61,9 +61,15 @@ public class BinarySearTree {
                 //2、不创建新节点，把当前节点的value改成新的value（采用这种）
                 cur.value = value;
                 return cur;
-
             }
         }
+        Node newNode = new Node(key,value);
+        if(prev.key > newNode.key){
+            prev.left = newNode;
+        }else {
+            prev.right = newNode;
+        }
+        return newNode;
     }
     public static void prevOrder(Node root){
         if(root == null){
