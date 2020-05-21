@@ -20,28 +20,38 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa6a0131-ac3b-4e08-94cb-240ba3050921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Process.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Test.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/操作系统进程调度.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../线程/src/线程.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/进程调度.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/进程调度.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/进程调度.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/Pcb.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/ProcessScheduling$PCBComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/ProcessScheduling.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/进程调度.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/PCB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/操作系统进程调度/PCB.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/PCBComparator.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/操作系统进程调度/Process.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Process.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../进程调度/out/production/进程调度/Pcb.class" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/Pcb.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../进程调度/out/production/进程调度/ProcessScheduling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/ProcessScheduling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../进程调度/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/src/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../进程调度/src/Pcb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/src/Pcb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -72,7 +82,7 @@
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../进程调度/src" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../进程调度" />
   </component>
   <component name="RunManager" selected="Application.Process">
     <configuration name="Process" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -129,9 +139,41 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="278" y="81" key="#com.intellij.ide.util.MemberChooser/0.0.1536.832@0.0.1536.832" timestamp="1590056282869" />
-    <state x="880" y="113" key="FileChooserDialogImpl" timestamp="1590073819865">
+    <state x="880" y="113" key="FileChooserDialogImpl" timestamp="1590078614282">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state x="880" y="113" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1590073819865" />
+    <state x="880" y="113" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1590078614282" />
+    <state width="714" height="246" key="GridCell.Tab.0.bottom" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.0.center" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.0.left" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.0.right" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.1.bottom" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.1.bottom/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.1.center" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.1.center/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.1.left" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.1.left/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="714" height="246" key="GridCell.Tab.1.right" timestamp="1590078902178">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state width="714" height="246" key="GridCell.Tab.1.right/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
   </component>
 </project>

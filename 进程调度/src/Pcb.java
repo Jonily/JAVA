@@ -17,6 +17,7 @@ class ProcessScheduling extends Thread {
 
     private int count;
     private String option=null;
+
     private void select() {
         // TODO Auto-generated method stub
         System.out.println("******************************************");

@@ -20,20 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="beb84086-0ed1-4269-a3a5-3e1a6e3c7b64" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/Pcb.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/ProcessScheduling$PCBComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/ProcessScheduling.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/out/production/进程调度/进程调度.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../操作系统进程调度/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCBComparator.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCBComparator.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Process.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../../操作系统进程调度/src/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/Process.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCBComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Process.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/PCB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/Process.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/操作系统进程调度.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/线程.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/进程调度.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/进程调度/Pcb.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/进程调度/Pcb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/进程调度/ProcessScheduling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/进程调度/ProcessScheduling.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Pcb.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pcb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -108,22 +120,6 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="375" y="96" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1590073939665" />
-    <state width="712" height="198" key="GridCell.Tab.0.bottom" timestamp="1590077011215">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="712" height="198" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1590077011215" />
-    <state width="712" height="198" key="GridCell.Tab.0.center" timestamp="1590077011215">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="712" height="198" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1590077011215" />
-    <state width="712" height="198" key="GridCell.Tab.0.left" timestamp="1590077011215">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="712" height="198" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1590077011215" />
-    <state width="712" height="198" key="GridCell.Tab.0.right" timestamp="1590077011215">
-      <screen x="0" y="0" width="1536" height="832" />
-    </state>
-    <state width="712" height="198" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1590077011215" />
     <state x="0" y="0" key="SettingsEditor" timestamp="1590073945511">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
