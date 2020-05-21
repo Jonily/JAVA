@@ -1,10 +1,8 @@
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.Scanner;
+import java.util.*;
 
- class ProcessScheduling extends Thread {
+class ProcessScheduling extends Thread {
     public static void main(String[] args) {
         // TODO Auto-generated method stub
         ProcessScheduling p = new ProcessScheduling();
@@ -12,11 +10,11 @@ import java.util.Scanner;
     }
 
     private int num;
-    private ArrayList<Pcb> mes = new ArrayList<Pcb>();
+
     private ArrayList<Pcb> use = new ArrayList<Pcb>();
     private ArrayList<Pcb> finish = new ArrayList<Pcb>();
     private ArrayList<Pcb> run = new ArrayList<Pcb>();
-    private boolean flag = true;
+
     private int count;
     private String option=null;
     private void select() {
@@ -33,11 +31,11 @@ import java.util.Scanner;
             int id = sanid.nextInt();
             System.out.println("请输入第" + i + "个进程优先数");
             Scanner sancount = new Scanner(System.in);
-            int sanc = sanid.nextInt();
+            int sanc = sancount.nextInt();
             System.out.println("请输入第" + i + "个进程所需服务时间");
             Scanner sanneed = new Scanner(System.in);
-            int saneed = sanid.nextInt();
-            mes.add(new Pcb(id, sanc, saneed));
+            int saneed = sanneed.nextInt();
+
             use.add(new Pcb(id, sanc, saneed));
             System.out.println("");
         }
@@ -45,42 +43,30 @@ import java.util.Scanner;
         this.run();
 
     }
-    private void judgeSort() {
-        // 进行优先数排序PrioCreateProccess()
-        for (int i = 0; i < use.size(); ++i) {
-            for (int j = 0; j < use.size(); ++j) {
-                if (use.get(i).youxianshu > use.get(j).youxianshu) {
-                    int t = use.get(i).youxianshu;
-                    int tt = use.get(i).id;
-                    int ttt = use.get(i).needtime;
-                    use.get(i).youxianshu = use.get(j).youxianshu;
-                    use.get(i).id = use.get(j).id;
-                    use.get(i).needtime = use.get(j).needtime;
-                    use.get(j).youxianshu = t;
-                    use.get(j).id = tt;
-                    use.get(j).needtime = ttt;
-                }
-            }
-        }
-    }
+     class PCBComparator implements Comparator<Pcb> {
+         @Override
+         public int compare(Pcb o1, Pcb o2) {
+             int pri1 = o1.youxianshu;
+             int pri2 = o2.youxianshu;
+             return pri2 - pri1;
+         }
+     }
 
     @Override
     public void run() {
+        boolean flag = true;
         if(option=="youxianshu"){
             count = 0;
-            judgeSort();
+            Collections.sort(use,new PCBComparator());
             count++;
             while (flag) {
                 if (run == null) {
                     run.add(use.get(0));
                     System.out.println("还没有进程被调度");
                 }
-                use.get(0).youxianshu -= 3;
+                use.get(0).youxianshu -= 1;
                 use.get(0).needtime -= 1;
                 use.get(0).state = "run";
-                for (int h = 1; h < use.size(); h++) {
-                    use.get(h).state = "wait";
-                }
                 for (int i = 0; i < use.size(); ++i) {
                     if (use.get(i).needtime == 0) {
                         use.get(i).state = "finish";
@@ -97,7 +83,7 @@ import java.util.Scanner;
                     System.out
                             .println(count + "                  " + finish.get(j).id + "        " + finish.get(j).youxianshu
                                     + "              " + finish.get(j).needtime + "               " + finish.get(j).state);
-                judgeSort();
+                Collections.sort(use,new PCBComparator());
                 count++;
 
                 // 如果进程结束，就加入finish，从run中走
@@ -131,10 +117,5 @@ public class Pcb {
         this.needtime=needtime;
     }
 
-    public  Pcb(int id,int needtime){
-        this.id=id;
-//	this.youxianshuu=youxinashu;
-        this.needtime=needtime;
-    }
 
 }
