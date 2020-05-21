@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="beb84086-0ed1-4269-a3a5-3e1a6e3c7b64" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCB.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/PCBComparator.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Process.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/out/production/操作系统进程调度/Test.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/PCB.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/Process.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/src/Test.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../操作系统进程调度/操作系统进程调度.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../线程/src/线程.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/src.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/进程调度.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/进程调度/Pcb.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/进程调度/Pcb.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../out/production/进程调度/ProcessScheduling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../out/production/进程调度/ProcessScheduling.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Pcb.java" beforeDir="false" afterPath="$PROJECT_DIR$/Pcb.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1cDr5T1nmRH86B0Vbbrf9XUBulp" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/.." />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="beb84086-0ed1-4269-a3a5-3e1a6e3c7b64" name="Default Changelist" comment="" />
+      <created>1590073821335</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1590073821335</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="375" y="96" key="FileChooserDialogImpl" timestamp="1590073939665">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="375" y="96" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1590073939665" />
+    <state x="0" y="0" key="SettingsEditor" timestamp="1590073945511">
+      <screen x="0" y="0" width="1536" height="832" />
+    </state>
+    <state x="0" y="0" key="SettingsEditor/0.0.1536.832@0.0.1536.832" timestamp="1590073945511" />
+  </component>
+</project>
