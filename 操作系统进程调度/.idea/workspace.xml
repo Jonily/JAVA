@@ -20,39 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fa6a0131-ac3b-4e08-94cb-240ba3050921" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/out/production/进程调度/进程调度.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/进程调度.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/src.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/Pcb.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/ProcessScheduling$PCBComparator.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/ProcessScheduling.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../进程调度/src/out/production/进程调度/进程调度.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/PCB.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/操作系统进程调度/PCB.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/PCBComparator.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/Process.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/操作系统进程调度/Process.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/操作系统进程调度/Test.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/PCB.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/PCB.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Process.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Process.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../进程调度/out/production/进程调度/Pcb.class" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/Pcb.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../进程调度/out/production/进程调度/ProcessScheduling.class" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/out/production/进程调度/ProcessScheduling.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../进程调度/src/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/src/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../进程调度/src/Pcb.java" beforeDir="false" afterPath="$PROJECT_DIR$/../进程调度/src/Pcb.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -143,22 +112,22 @@
       <screen x="0" y="0" width="1536" height="832" />
     </state>
     <state x="880" y="113" key="FileChooserDialogImpl/0.0.1536.832@0.0.1536.832" timestamp="1590078614282" />
-    <state width="714" height="246" key="GridCell.Tab.0.bottom" timestamp="1590078902178">
+    <state width="1483" height="637" key="GridCell.Tab.0.bottom" timestamp="1590079340306">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="714" height="246" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
-    <state width="714" height="246" key="GridCell.Tab.0.center" timestamp="1590078902178">
+    <state width="1483" height="637" key="GridCell.Tab.0.bottom/0.0.1536.832@0.0.1536.832" timestamp="1590079340306" />
+    <state width="1483" height="637" key="GridCell.Tab.0.center" timestamp="1590079340306">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="714" height="246" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
-    <state width="714" height="246" key="GridCell.Tab.0.left" timestamp="1590078902178">
+    <state width="1483" height="637" key="GridCell.Tab.0.center/0.0.1536.832@0.0.1536.832" timestamp="1590079340306" />
+    <state width="1483" height="637" key="GridCell.Tab.0.left" timestamp="1590079340306">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="714" height="246" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
-    <state width="714" height="246" key="GridCell.Tab.0.right" timestamp="1590078902178">
+    <state width="1483" height="637" key="GridCell.Tab.0.left/0.0.1536.832@0.0.1536.832" timestamp="1590079340306" />
+    <state width="1483" height="637" key="GridCell.Tab.0.right" timestamp="1590079340306">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
-    <state width="714" height="246" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1590078902178" />
+    <state width="1483" height="637" key="GridCell.Tab.0.right/0.0.1536.832@0.0.1536.832" timestamp="1590079340306" />
     <state width="714" height="246" key="GridCell.Tab.1.bottom" timestamp="1590078902178">
       <screen x="0" y="0" width="1536" height="832" />
     </state>
