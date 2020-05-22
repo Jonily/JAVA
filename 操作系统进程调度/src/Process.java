@@ -17,17 +17,17 @@ public class Process extends Thread {
         System.out.println("******************************************");
         System.out.println("*************   优先级调度   ************");
         //输入需要工作的进程
-        System.out.println("请输入进程个数(至少有有1个进程)");
+        System.out.println("请输入进程个数(至少有1个进程)");
         Scanner scan = new Scanner(System.in);
         num = scan.nextInt();
         for (int i = 1; i <= num; i++) {
             System.out.println("请输入第" + i + "个进程名");
             Scanner scan1 = new Scanner(System.in);
             String name = scan1.next();
-            System.out.println("请输入第" + i + "个进程优先数");
+            System.out.println("请输入第" + i + "个进程的优先级");
             Scanner scan2 = new Scanner(System.in);
             int pri = scan2.nextInt();
-            System.out.println("请输入第" + i + "个进程所需服务时间");
+            System.out.println("请输入第" + i + "个进程所需的运行时间");
             Scanner scan3 = new Scanner(System.in);
             int workTime = scan3.nextInt();
 
