@@ -22,7 +22,6 @@ public class Node {
         this.next = next;
     }
 
-
 }
 class MyLinkedList{
     public Node head = null;
@@ -59,26 +58,31 @@ class MyLinkedList{
         Node pre = findPrev();
         pre.setNext(cur);
     }
+
+    //任意位置前驱
+    public Node findIndex(int index){
+        Node cur = this.head;
+        for(int i = 0; i < index - 1; i++){
+            cur.setNext(cur.getNext());
+        }
+        return cur;
+    }
+
     //任意位置插入
     public void indexAdd(int index ,int data) {
-        Node pre = this.head;
-        Node cur = new Node(data);
-        if(this.head == null){
-            this.head = cur;
-        }
+
         if(index < 0 || index > size()){
             throw new RuntimeException("输入下标不合法！");
         }else if(index == 0){
             headAdd(data);
         }else if(index == size()){
             tailAdd(data);
+        }else {
+            Node cur = new Node(data);
+            Node pre = findIndex(index);
+            cur.setNext(pre.getNext());
+            pre.setNext(cur);
         }
-        for(int i = 0; i <= index; i++){
-            pre = pre.getNext();
-        }
-        cur.setNext(pre.getNext().getNext());
-        pre.setNext(cur);
-
     }
 
     //打印单链表
@@ -105,17 +109,13 @@ class MyLinkedList{
         }
         return count;
     }
-
-
-
-
     public static void main(String[] args) {
         MyLinkedList myLinkedList = new MyLinkedList();
         myLinkedList.headAdd(1);
         myLinkedList.headAdd(2);
         myLinkedList.headAdd(3);
         myLinkedList.tailAdd(4);
-        myLinkedList.indexAdd(1,10);
+        myLinkedList.indexAdd(0,10);
 
         myLinkedList.disPlay();
 
