@@ -2,12 +2,8 @@ import java.util.*;
 
 
 public class Process extends Thread {
-    public static void main(String[] args) {
-        Process process = new Process();
-        process.work();
-    }
     private int num; //要运行的进程个数
-    private List<PCB> use = new ArrayList<>();//就绪的进程1
+    private List<PCB> use = new ArrayList<>();//就绪的进程
     private List<PCB> run = new ArrayList<>();//正在运行的进程
     private List<PCB> finish = new ArrayList<>();//已经完成的进程
     private int count; //记录时间片
@@ -73,15 +69,12 @@ public class Process extends Thread {
                 for (int j = 0; j < use.size(); j++){
                     System.out.println(count + "                   " + use.get(j).name + "             " + use.get(j).pri
                             + "                  " + use.get(j).workTime + "          " + use.get(j).state);
-
                 }
-
-//打印已经完成的进程，finish中就是已经完成的进程
+                //打印已经完成的进程，finish中就是已经完成的进程
                 for (int j = 0; j < finish.size(); j++){
                     System.out
                             .println(count + "                  " + finish.get(j).name + "        " + finish.get(j).pri
                                     + "              " + finish.get(j).workTime + "               " + finish.get(j).state);
-
                 }
                 Collections.sort(use,new PCBComparator());
                 count++;
@@ -103,15 +96,14 @@ public class Process extends Thread {
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
-
         }
-
-
     }
 
-
+    public static void main(String[] args) {
+        Process process = new Process();
+        process.work();
+    }
 }
 
 
