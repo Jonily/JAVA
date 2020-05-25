@@ -111,6 +111,24 @@ class MyLinkedList{
             System.out.println("没有这个节点！");
         }
     }
+    //删除所有关键字为key的节点
+    public void delAllKey(int key) {
+        Node pre = this.head;
+        Node cur = pre.getNext();
+        if(this.head.getVal() == key){
+            this.head = cur;
+        }
+        while (cur != null){
+            if(cur.getVal() == key){
+                pre.setNext(cur.getNext());
+            }else {
+                pre = cur;
+            }
+            cur = cur.getNext();
+        }
+
+    }
+
     //打印单链表
     public void disPlay(){
         if (this.head == null){
@@ -121,6 +139,10 @@ class MyLinkedList{
             System.out.print(cur.getVal()+" ");
             cur = cur.getNext();
         }
+    }
+    //清空单链表
+    public void clear(){
+        this.head = null;
     }
     //单链表长度
     public Integer size(){
@@ -140,14 +162,23 @@ class MyLinkedList{
         myLinkedList.headAdd(1);
         myLinkedList.headAdd(2);
         myLinkedList.headAdd(3);
+        myLinkedList.headAdd(3);
+
         myLinkedList.tailAdd(4);
+        myLinkedList.tailAdd(7);
+        myLinkedList.tailAdd(7);
+        myLinkedList.disPlay();
         myLinkedList.indexAdd(0,10);
         System.out.println(myLinkedList.findKey(4));
-        myLinkedList.delFirKey(2);
-        System.out.println(myLinkedList.findKey(4));
+        //myLinkedList.delFirKey(3);
+        myLinkedList.delAllKey(3);
+        myLinkedList.delAllKey(7);
 
+        System.out.println(myLinkedList.findKey(4));
+        myLinkedList.clear();
 
         myLinkedList.disPlay();
+
 
     }
 }
