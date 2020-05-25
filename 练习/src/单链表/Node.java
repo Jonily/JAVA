@@ -87,14 +87,30 @@ class MyLinkedList{
     //查找是否包含关键字key是否在单链表当中
     public boolean findKey(int key) {
         Node pre = this.head;
-        for(int i = 0; i < size(); i++) {
-            if(pre.getVal() == key){
+        while (pre != null) {
+            if (pre.getVal() == key) {
                 return true;
             }
+            pre = pre.getNext();
         }
         return false;
     }
-
+    //删除第一次出现关键字为key的节点
+    public void delFirKey(int key) {
+        if (this.head.getVal() == key) {
+            this.head = this.head.getNext();
+        } else {
+            Node cur = this.head;
+            while (cur.getNext() != null) {
+                if (cur.getNext().getVal() == key) {
+                    cur.setNext(cur.getNext().getNext());
+                    return;
+                }
+                cur = cur.getNext();
+            }
+            System.out.println("没有这个节点！");
+        }
+    }
     //打印单链表
     public void disPlay(){
         if (this.head == null){
@@ -126,6 +142,10 @@ class MyLinkedList{
         myLinkedList.headAdd(3);
         myLinkedList.tailAdd(4);
         myLinkedList.indexAdd(0,10);
+        System.out.println(myLinkedList.findKey(4));
+        myLinkedList.delFirKey(2);
+        System.out.println(myLinkedList.findKey(4));
+
 
         myLinkedList.disPlay();
 
