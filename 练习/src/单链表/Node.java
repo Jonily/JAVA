@@ -84,6 +84,16 @@ class MyLinkedList{
             pre.setNext(cur);
         }
     }
+    //查找是否包含关键字key是否在单链表当中
+    public boolean findKey(int key) {
+        Node pre = this.head;
+        for(int i = 0; i < size(); i++) {
+            if(pre.getVal() == key){
+                return true;
+            }
+        }
+        return false;
+    }
 
     //打印单链表
     public void disPlay(){
