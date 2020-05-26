@@ -159,24 +159,13 @@ class MyLinkedList{
     }
     public static void main(String[] args) {
         MyLinkedList myLinkedList = new MyLinkedList();
-        myLinkedList.headAdd(1);
-        myLinkedList.headAdd(2);
-        myLinkedList.headAdd(3);
-        myLinkedList.headAdd(3);
 
         myLinkedList.tailAdd(4);
         myLinkedList.tailAdd(7);
-        myLinkedList.tailAdd(7);
+        myLinkedList.tailAdd(8);
         myLinkedList.disPlay();
-        myLinkedList.indexAdd(0,10);
-        System.out.println(myLinkedList.findKey(4));
-        //myLinkedList.delFirKey(3);
-        myLinkedList.delAllKey(3);
-        myLinkedList.delAllKey(7);
-
-        System.out.println(myLinkedList.findKey(4));
-        myLinkedList.clear();
-
+        System.out.println();
+        myLinkedList.delFirKey(4);
         myLinkedList.disPlay();
 
 
