@@ -164,8 +164,9 @@ class MyLinkedList{
         myLinkedList.tailAdd(7);
         myLinkedList.tailAdd(8);
         myLinkedList.disPlay();
+        myLinkedList.indexAdd(1,23);
         System.out.println();
-        myLinkedList.delFirKey(4);
+        myLinkedList.delFirKey(7);
         myLinkedList.disPlay();
 
 
