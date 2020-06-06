@@ -40,3 +40,30 @@ public class Match {
      }
 }
 
+class Parenthesis {
+    public boolean chkParenthesis(String A, int n) {
+        Stack<Character> stack = new Stack<>();
+        for (int i = 0; i < n ; i++) {
+            char c = A.charAt(i);
+            if('(' == c || ')' == c){
+                if('(' == c){
+                    stack.push(c);
+                }else {
+                    if(stack.isEmpty()){
+                        return false;
+                    }
+                    char b = stack.pop();
+                    if(b == '(' && c != ')'){
+                        return false;
+                    }
+                }
+            }else {
+                return false;
+            }
+        }
+        if(stack.isEmpty()){
+            return true;
+        }
+        return false;
+    }
+}
