@@ -1,7 +1,7 @@
 package 任意数字组合之和等于给定数字;
 
 import java.util.Scanner;
-public class Main {
+public class Sum {
     static  int[] record ;
     static  int n ;
     public static void main(String[] args) {

@@ -1,6 +1,6 @@
 package 买苹果;
 import java.util.Scanner;
-public class Main {
+public class buy {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         int a = in.nextInt();
