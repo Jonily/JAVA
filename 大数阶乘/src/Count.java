@@ -14,7 +14,7 @@ public class Count {
             int num=0;
             for(j=0;j<digit;j++)
             {
-                temp=a[j]*i+num;//将一个数的每一位数都分别乘以i，
+                temp=a[j]*i+num;//将一个数的每一位数都分别乘以i，num是进位的数字
                 a[j]=temp%10;//将一个数的每一位数利用数组进行储存
                 num=temp/10;
             }
