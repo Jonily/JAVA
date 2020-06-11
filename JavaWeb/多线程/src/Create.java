@@ -18,6 +18,7 @@ public class Create {
         //这个pcb就会让cpu执行对应的代码，例如上面的run方法
         myThread.start();
         while (true){
+
         }
     }
 }
