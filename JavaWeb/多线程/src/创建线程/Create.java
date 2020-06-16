@@ -1,3 +1,5 @@
+package 创建线程;
+
 public class Create {
     static class MyThread extends Thread{
         @Override
