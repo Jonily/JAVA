@@ -1,4 +1,4 @@
-package 流操作;
+package 流操作.字节流;
 
 import java.io.*;
 
@@ -23,7 +23,7 @@ public class IODemo3 {
             e.printStackTrace();
         }
         long end = System.currentTimeMillis();
-        System.out.println("no buffer"+(end - beg)+"ms");
+        System.out.println("no buffer "+(end - beg)+"ms");
     }
     private static void teatBuffer(String srcPath,String destPath) throws IOException {
         long beg = System.currentTimeMillis();
@@ -38,7 +38,7 @@ public class IODemo3 {
             e.printStackTrace();
         }
         long end = System.currentTimeMillis();
-        System.out.println("have buffer"+(end - beg)+"ms");
+        System.out.println("have buffer "+(end - beg)+"ms");
 
 
     }
