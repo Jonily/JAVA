@@ -24,8 +24,12 @@ public class TcpEchoServer {
         while (true) {
             //1)先从内核中获取一个Tcp连接
             Socket clientSocket = serverSocket.accept();
-
+            //2、处理连接
+            processConnection(clientSocket);
         }
+
+    }
+    public void processConnection(Socket socket){
 
     }
 }
