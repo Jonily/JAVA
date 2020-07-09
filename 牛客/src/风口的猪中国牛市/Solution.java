@@ -1,5 +1,4 @@
 package 风口的猪中国牛市;
-
 public class Solution {
     /**
      * 计算你能获得的最大收益
@@ -8,25 +7,21 @@ public class Solution {
      * @return 整型
      */
 
-        public int calculateMax(int[] prices) {
-            int firstBuy = Integer.MAX_VALUE;//第一次买入的价格
-            // 接下来都是买入卖出之后的收益
-            int afterFirstSell = 0;
-            int afterSecondBuy = Integer.MIN_VALUE;
-            int afterSecondSell = 0;
-
-            for (int curPrice: prices){
-                //第一次买入的价格应该是越小越好，最好是负数，倒贴钱
-                firstBuy = Math.min(firstBuy, curPrice);
-                //第一次卖出后的收益，等于当前价格减去第一次买入价格，越高越好
-                afterFirstSell = Math.max(afterFirstSell, curPrice - firstBuy);
-                //第二次买入后的收益，等于第一次卖出后的收益减去当前价格，越高越好
-                afterSecondBuy = Math.max(afterSecondBuy, afterFirstSell - curPrice);
-                //第二次卖出后的收益，等于第二次买入后的收益加上当前价格，越高越好
-                afterSecondSell = Math.max(afterSecondSell, afterSecondBuy + curPrice);
-            }
-            return afterSecondSell;
+    public int calculateMax(int[] prices){
+        int firstBuy = Integer.MAX_VALUE;//第一次买入的右区间
+        int firstSell = 0;//第一次卖出的利润
+        int secondBuyOfsell = Integer.MIN_VALUE;//第二次买入的左区间
+        int secondSell = 0;//第二卖出的利润
+        for (int p: prices) {
+            //第一次买入的要越低越好
+            firstBuy = Math.min(firstBuy,p);
+            //第一次卖出的利润,当前的价格-第一次买的要越大越好
+            firstSell = Math.max(firstSell,p-firstBuy);
+            //用第一次卖出去的钱来第二次买入后剩余的钱的要越大越好
+            secondBuyOfsell = Math.max(secondBuyOfsell,firstSell - p);
+            //第二次卖出的钱+第一次用来第二次买入后剩余的钱要越大越好
+            secondSell = Math.max(secondSell,secondBuyOfsell+p);
         }
-
-
+        return secondSell;
+    }
 }
