@@ -3,6 +3,7 @@ package model;
 public class User {
     private int userId;
     private String name;
+    private String password;
 
     public int getUseId() {
         return userId;
@@ -28,6 +29,5 @@ public class User {
         this.password = password;
     }
 
-    private String password;
 
 }
