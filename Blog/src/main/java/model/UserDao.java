@@ -10,7 +10,7 @@ import java.sql.SQLException;
 public class UserDao {
     //1、新增用户（注册）
     //把一个User 对象插入到数据库中
-    void add(User user){
+   public void add(User user){
         //1、获取到数据库连接
         //常见异常原因
         //1、url写错（数据库的IP，端口号、数据库名、url格式错误）
