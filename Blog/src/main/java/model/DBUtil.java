@@ -4,13 +4,11 @@ package model;
 import com.mysql.jdbc.jdbc2.optional.MysqlDataSource;
 
 import javax.sql.DataSource;
-import java.net.URI;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 
-import static sun.plugin.javascript.navig.JSType.URL;
 
 //用于管理数据库连接
 //1、建立连接 断开连接
@@ -20,7 +18,7 @@ import static sun.plugin.javascript.navig.JSType.URL;
 //使用懒汉
 public class DBUtil {
     private static DataSource dataSource = null;
-    private static final String url = "jdbc:mysql://127.0.0.1:3306/myBlog?characterEncoding=utf-8&useSSL=true";
+    private static final String URL = "jdbc:mysql://127.0.0.1:3306/myBlog?characterEncoding=utf-8&useSSL=true";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "123456";
   /*  懒汉实现的单例模式有一个重要的问题:

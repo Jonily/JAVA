@@ -6,7 +6,6 @@ public class Article {
     private String content;
     private int userId;
 
-
     public int getArticleId() {
         return articleId;
     }
@@ -31,7 +30,7 @@ public class Article {
         this.content = content;
     }
 
-    public String getUserId() {
+    public int getUserId() {
         return userId;
     }
 
@@ -39,5 +38,13 @@ public class Article {
         this.userId = userId;
     }
 
-
+    @Override
+    public String toString() {
+        return "Article{" +
+                "articleId=" + articleId +
+                ", title='" + title + '\'' +
+                ", content='" + content + '\'' +
+                ", userId=" + userId +
+                '}';
+    }
 }
