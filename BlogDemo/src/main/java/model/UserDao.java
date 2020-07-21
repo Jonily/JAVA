@@ -42,6 +42,7 @@ public class UserDao {
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         try {
+            assert connection != null;
             statement = connection.prepareStatement(sql);
             statement.setString(1, name);
             // 3. 执行 SQL
