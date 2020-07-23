@@ -1,47 +1,44 @@
 package 简单错误记录;
 
-import java.util.*;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         Map<String,Integer> map = new LinkedHashMap<>();
-        String path = "";
-        String s1 = "";
-        String key = "";
-        while (in.hasNext()){
-          path = in.next();
-            int id = path.lastIndexOf('\\');
-            int Line = in.nextInt();
-             s1 = id<0  ? path : path.substring(id+1);
-            key = s1+" "+Line;
-            if(map.containsKey(key)){
-                map.put(key,map.get(key)+1);
-            }else {
-                map.put(key,1);
-            }
-        }
-        in.close();
-        List<Map.Entry<String,Integer>> list = new LinkedList<Map.Entry<String,Integer>>(map.entrySet());
-        Collections.sort(list, new Comparator<Map.Entry<String, Integer>>() {
-            @Override
-            public int compare(Map.Entry<String, Integer> o1, Map.Entry<String, Integer> o2) {
-                return (o1.getValue()-o2.getValue()) == 0? (o1.getValue()-o2.getValue()) : (o2.getValue()-o1.getValue());
-            }
-        });
-
         int count = 0;
-        for (Map.Entry<String,Integer> sb:list) {
+        while (in.hasNext()){
+            String s1 = in.nextLine();
+            fun(s1,map);
+
+        }
+        // 输出后8位
+        for (String st : map.keySet()) {
             count++;
-            if(count < 8){
-                String[] str = sb.getKey().split(" ");
-                String k = str[0].length()>16 ? str[0].substring(str[0].length()-16) : str[0];
-                String n = str[1];
-                System.out.println(k+" "+n+" "+sb.getValue());
-            }else {
-                break;
+            if (count > (map.size() - 8)) {
+                System.out.println(st + " " + map.get(st));
             }
         }
+    }
 
+    private static void fun(String s1, Map<String, Integer> map) {
+        String[] str = s1.split(" ");
+        // "\\\\"按照反斜杠分割
+        String[] nameStr = str[0].split("\\\\");
+        int num =Integer.parseInt(str[1]);
+        String name = nameStr[nameStr.length-1];
+        // 取最后有效的16个字符为最终文件名
+        if(name.length()>16){
+            name = name.substring(name.length()-16);
+        }
+        // 将文件名和行号组成字符串 作为map的key值存放
+        String key = name+" "+num;
+        if (map.containsKey(key)) {
+            map.put(key, map.get(key) + 1);
+        } else {
+            map.put(key, 1);
+        }
     }
 }
