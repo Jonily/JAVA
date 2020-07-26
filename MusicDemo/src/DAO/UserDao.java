@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 public class UserDao {
     //登录
-    private static User login(User loginUser){
+    public static User login(User loginUser){
         User user = null;
         Connection connection = null;
         PreparedStatement statement = null;
