@@ -343,7 +343,6 @@ public class MusicDao {
             statement = connection.prepareStatement(sql);
             statement.setInt(1,userId);
             resultSet = statement.executeQuery();
-
             while (resultSet.next()){
                 Music music = new Music();
                 music.setId(resultSet.getInt("music_id"));
@@ -381,7 +380,6 @@ public class MusicDao {
             statement = connection.prepareStatement(sql);
             statement.setInt(1,userId);
             resultSet = statement.executeQuery();
-
             while (resultSet.next()){
                 Music music = new Music();
                 music.setId(resultSet.getInt("music_id"));
