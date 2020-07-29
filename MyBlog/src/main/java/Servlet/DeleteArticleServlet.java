@@ -15,7 +15,8 @@ import java.io.IOException;
 public class DeleteArticleServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        resp.setContentType("text/html;charset-utf-8");
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("text/html;charset=utf-8");
         // 1. 验证用户的登陆状态, 如果未登陆, 肯定不能删除.
         HttpSession httpSession = req.getSession(false);
         if(httpSession == null){
