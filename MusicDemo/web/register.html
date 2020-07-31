@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
     <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-    <title>音乐播放器登录页面</title>
+    <title>音乐播放器注册页面</title>
 
     <!-- 1. 导入CSS的全局样式 -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -17,9 +17,9 @@
     <script type="text/javascript"></script>
     <style>
         #body{
-            background-image: url("images/3.png");
-            /*background-size:100% 100%;
-            background-attachment: fixed;*/
+            background-image: url("images/8.jpg");
+            background-size:100% 100%;
+            background-attachment: fixed;
         }
     </style>
     <script>
@@ -50,9 +50,12 @@
         });
     </script>
 </head>
+
+
 <body id="body">
-<div class="container" style="width: 400px;margin-top: 250px;">
+<div class="container" style="width: 500px;margin-top: 250px; background-color: rgba(255,255,255,0.8)">
     <!--        <form action="login" method="post">-->
+    <h3 style="text-align: center;">用户注册</h3>
     <div class="form-group" >
         <label for="user">用户名：</label>
         <input type="text" name="username" class="form-control" id="user" placeholder="请输入用户名"/>
@@ -67,9 +70,17 @@
     <div class="form-group" style="text-align: center;"><!--class="form-group"-->
         <input style="width: 100px;height: 40px" id="submit" class="btn btn btn-primary" type="button" value="注册" >
 
+    </div>
+    <br>
 
-
-
+    <!--	  	</form>-->
+    <!-- 出错显示的信息框 -->
+    <div class="alert alert-warning alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" >
+            <span>&times;</span>
+        </button>
+        <strong id="message">您尚未进行注册，请您注册!</strong>
+    </div>
 </div>
 </body>
 </html>

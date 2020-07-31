@@ -30,9 +30,7 @@ public class UserDao {
                 user.setId(resultSet.getInt("id"));
                 user.setUsername(resultSet.getString("username"));
                 user.setPassword(resultSet.getString("password"));
-                user.setAge(resultSet.getInt("age"));
-                user.setGender(resultSet.getString("gender"));
-                user.setEmail(resultSet.getString("email"));
+
             }
 
         } catch (SQLException e) {
@@ -47,15 +45,13 @@ public class UserDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String sql ="insert into user values (null ,?,?,?,?,?)";
+        String sql ="insert into user values (null ,?,?)";
         try{
             connection = DBUtils.getConnect();
             preparedStatement = connection.prepareStatement(sql);
             preparedStatement.setString(1,user.getUsername());
             preparedStatement.setString(2,user.getPassword());
-            preparedStatement.setString(3,user.getGender());
-            preparedStatement.setInt(4,user.getAge());
-            preparedStatement.setString(5,user.getEmail());
+
 
             preparedStatement.executeUpdate();
 
@@ -66,11 +62,36 @@ public class UserDao {
         }
     }
 
+    //通过名字查看用户
+    public boolean findUserByName(String s){
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String sql = "select * from user where username = ? ";
+
+        try{
+            connection = DBUtils.getConnect();
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,s);
+
+           resultSet =  preparedStatement.executeQuery();
+           if(resultSet.next()){
+               return true;
+           }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtils.getClose(connection,preparedStatement,resultSet);
+        }
+        return false;
+    }
+
     public static void main(String[] args) {
-      /*  User user= new User();
+      /* User user= new User();
         user.setUsername("bit");
-        user.setPassword("123");
-        User loginUser  = login(user);
-        System.out.println(loginUser);*/
+
+        System.out.println(findUserByName(user.getUsername()));*/
     }
 }
