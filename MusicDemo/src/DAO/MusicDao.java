@@ -20,9 +20,9 @@ public class MusicDao {
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-
+        String sql ="select * from  music";
         try{
-            String sql ="select * from  music";
+
              connection = DBUtils.getConnect();
              statement = connection.prepareStatement(sql);
              resultSet = statement.executeQuery();

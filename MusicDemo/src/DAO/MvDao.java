@@ -29,7 +29,7 @@ public class MvDao {
             preparedStatement = connection.prepareStatement(sql);
             resultSet = preparedStatement.executeQuery();
 
-            if(resultSet.next()){
+            while (resultSet.next()){
                 MV mv = new MV();
                 mv.setId(resultSet.getInt("id"));
                 mv.setTitle(resultSet.getString("title"));
@@ -39,7 +39,6 @@ public class MvDao {
                 mv.setUserid(resultSet.getInt("userid"));
                 mvList.add(mv);
 
-                return mvList;
             }
 
         } catch (SQLException e) {
@@ -47,7 +46,8 @@ public class MvDao {
         }finally {
             DBUtils.getClose(connection,preparedStatement,resultSet);
         }
-        return null;
+
+        return mvList;
     }
 
     /**2
@@ -100,9 +100,8 @@ public class MvDao {
         try{
             connection = DBUtils.getConnect();
             preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,s);
             resultSet = preparedStatement.executeQuery();
-            if(resultSet.next()){
+            while (resultSet.next()){
                 MV mv = new MV();
                 mv.setId(resultSet.getInt("id"));
                 mv.setTitle(resultSet.getString("title"));
@@ -111,9 +110,6 @@ public class MvDao {
                 mv.setUrl(resultSet.getString("url"));
                 mv.setUserid(resultSet.getInt("userid"));
                 mvList.add(mv);
-
-                return mvList;
-
             }
 
         } catch (SQLException e) {
@@ -121,7 +117,7 @@ public class MvDao {
         }finally {
             DBUtils.getClose(connection,preparedStatement,resultSet);
         }
-        return null;
+        return mvList;
     }
 
 
