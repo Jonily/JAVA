@@ -19,7 +19,7 @@ import java.util.List;
 @WebServlet("/upload")
 public class UploadMusicServlet extends HttpServlet {
 
-    private final String SavePath="D:\\javaProgram\\JAVA\\MusicDemo\\web\\music";
+    private final String SavePath="/root/apache-tomcat-8.5.57/webapps/MyMusicDemo/music";
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

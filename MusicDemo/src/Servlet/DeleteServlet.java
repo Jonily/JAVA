@@ -41,7 +41,7 @@ public class DeleteServlet extends HttpServlet {
             //数据库删除还要删除服务器的
             if(ret == 1){
                 //删除服务器上的
-                File file = new File("D:\\javaProgram\\JAVA\\MusicDemo\\web\\"+music.getUrl()+".mp3");
+                File file = new File("/root/apache-tomcat-8.5.57/webapps/MyMusicDemo/"+music.getUrl()+".mp3");
                 if(file.delete()){
                     return_map.put("msg",true);
                 }else {
@@ -57,10 +57,6 @@ public class DeleteServlet extends HttpServlet {
             return_map.put("msg",false);
 
         }
-
-
-
-
 
         //将map返回给前端
         ObjectMapper mapper = new ObjectMapper();

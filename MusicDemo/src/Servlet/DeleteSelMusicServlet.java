@@ -44,7 +44,7 @@ public class DeleteSelMusicServlet extends HttpServlet {
                 int ret = musicDao.deleteMusicById(id);
                 if(ret == 1){
                     //删除服务器上的
-                    File file = new File("D:\\javaProgram\\JAVA\\MusicDemo\\web\\"+music.getUrl()+".mp3");
+                    File file = new File("/root/apache-tomcat-8.5.57/webapps/MyMusicDemo/"+music.getUrl()+".mp3");
                     if(file.delete()){
                         count+=ret;
                     }else {

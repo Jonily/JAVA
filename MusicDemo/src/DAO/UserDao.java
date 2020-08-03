@@ -88,7 +88,31 @@ public class UserDao {
         return false;
     }
 
+    //注销
+    public  int deleteUser(int id){
+        Connection connection = null;
+        PreparedStatement statement = null;
+        String sql = "delete from user where id=?";
+        try {
+            connection = DBUtils.getConnect();
+            statement= connection.prepareStatement(sql);//对sql语句的预编译
+            statement.setInt(1,id);
+            int ret = statement.executeUpdate();
+
+            if(ret == 1){
+                return 1;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtils.getClose(connection,statement,null);
+        }
+        return 0;
+    }
+
     public static void main(String[] args) {
+       /* UserDao userDao = new UserDao();
+        userDao.deleteUser(1);*/
       /* User user= new User();
         user.setUsername("bit");
 

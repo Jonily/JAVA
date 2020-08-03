@@ -34,7 +34,7 @@ background-attachment: fixed">
     });
     function load(loveMvName){
         $.ajax({
-            url: "/MusicDemo_war_exploded/findLoveMv",
+            url: "/MyMusicDemo/findLoveMv",
             type:"get",
             data:{loveMvName:loveMvName},
             dataType: "json",
@@ -45,17 +45,20 @@ background-attachment: fixed">
 
                 for (var i = 0; i < data.length; i++) {
                     var mvUrl = data[i].url+".mp4";
-                    s += "<video src=\""+mvUrl+"\" + controls=\"controls\" + width=\"100%\"> </video>";
+
+                    s+="<div class=\"video_div\" >";
+                    s += "<video src=\""+mvUrl+"\" + controls=\"controls\" + width=\"100%\"  > </video>";
 
                     s +="<font color=\"#FFFFFF\" >";
-                    s +="<h3 style=\" margin-left: auto\" >"+data[i].title+"</h3>";
+                    s +="<h3 style=\"margin-left: auto; margin-right: auto;\" >"+data[i].title+"</h3>";
                     s +="<h4 style=\" margin-left: auto\" >"+data[i].singer+"</h4>";
                     s +="</font>";
-                    s+= "<button class='am-btn am-btn-success' onclick=\"deleteInfo("+ data[i].id + ")\" >移除</button> ";
-
+                    s+= "<button class='am-btn am-btn-success' onclick=\"deleteInfo("+ data[i].id + ")\" > 移除</button> " +
+                        "<button class='am-btn am-btn-success' onclick=\"loveInfo("+ data[i].id + ")\" > 喜欢</button>";
+                    s+="</div>";
                 }
 
-                $("#video_div").html(s);
+                $("#mydiv").html(s);
 
                 var audios = document.getElementsByTagName("audio");
                 // 暂停函数
@@ -77,7 +80,7 @@ background-attachment: fixed">
     function deleteInfo(obj) {
         console.log(obj);
         $.ajax({
-            url:"/MusicDemo_war_exploded/removeLoveMvServlet",
+            url:"/MyMusicDemo/removeLoveMvServlet",
             type: "post",
             //发送给后端的数据
             data: {"id": obj},
@@ -85,7 +88,7 @@ background-attachment: fixed">
             success: function (data) {
                 if(data.msg===true){
                     alert("移除成功");
-                    window.location.href="/MusicDemo_war_exploded/LoveMv.html";
+                    window.location.href="/MyMusicDemo/LoveMv.html";
                 }else{
                     alert("移除失败");
                 }
@@ -114,19 +117,19 @@ background-attachment: fixed">
         </form>
     </div>
     <div style="float: right;margin-bottom: 15px">
-        <a class="btn btn-primary" href=" /MusicDemo_war_exploded/MV.html">回到上一页</a>
+        <a class="btn btn-primary" href=" /MyMusicDemo/MV.html">回到上一页</a>
     </div>
 
 
-    <div class="mydiv">
-        <div class="video_div"  id ="video_div">
-
+    <div class="mydiv" id ="mydiv">
+     <!--   <div class="video_div"  id ="video_div">
+-->
             <!--<video src="video/dy1.mp4" controls="controls" width="100%"> </video>
             <font color="#FFFFFF" >
                 <h3 style="margin-left: auto; margin-right: auto;">{{MVname}}</h3>
             </font>
             <button class="am-btn am-btn-success" >删除</button>-->
-        </div>
+        <!--</div>-->
     </div>
 
 </div>
