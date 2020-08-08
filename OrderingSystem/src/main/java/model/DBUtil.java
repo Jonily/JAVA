@@ -10,7 +10,7 @@ import java.sql.SQLException;
 
 //DBUtil 本质上是一个管理了单例的DataSource的类
 public class DBUtil {
-    private static final String URL="jdbc:mysql://127.0.0.1:3306/   ?characterEncoding=utf-8&useSSL=true";
+    private static final String URL="jdbc:mysql://127.0.0.1:3306/order_system?characterEncoding=utf-8&useSSL=true";
     private static final String USERNAME ="root";
     private static final String PASSWORD ="";
 
