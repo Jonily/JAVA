@@ -11,7 +11,7 @@ public class Main {
          */
          ApplicationContext context = new
                 ClassPathXmlApplicationContext("applications.xml");
-
+/*
          String bit = (String) context.getBean("hhh");
        // String bit1 = (String) context.getBean("java.lang.String#0");
         System.out.println(bit);
@@ -24,7 +24,15 @@ public class Main {
         System.out.println(duck);
 
         Duck2 duck2 = (Duck2)context.getBean("d2");
-        System.out.println(duck2);
+        System.out.println(duck2);*/
+
+     /*   Duck3 duck3 = (Duck3)context.getBean("duck1");
+        System.out.println(duck3);*/
+/*
+
+        DuckShop shop = (DuckShop) context.getBean("shop");
+        System.out.println(shop);
+*/
 
     }
 }

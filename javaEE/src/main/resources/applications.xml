@@ -24,4 +24,55 @@
         <constructor-arg name="n" value="烤鸭"/>
         <constructor-arg name="a" value="222"/>
     </bean>
+
+
+    <bean id="duck1" class="Duck3">
+
+        <property name="name" value="北京烤鸭"/>
+        <property name="age" value="1"/>
+        <property name="next" ref="duck2"/>
+
+    </bean>
+    <bean id="duck2" class="Duck3">
+
+        <property name="name" value="甜皮鸭"/>
+        <property name="age" value="1"/>
+        <property name="next" ref="duck3"/>
+
+    </bean>
+
+    <bean id="duck3" class="Duck3">
+
+    <property name="name" value="酱鸭"/>
+    <property name="age" value="1"/>
+
+</bean>
+
+
+
+    <bean id="d1_1" class="Duck">
+        <property name="age" value="18" />
+    </bean>
+
+    <bean id="d1_2" class="Duck">
+        <property name="name" value="s2"  />
+        <property name="age" value="18" />
+    </bean>
+
+    <bean id="d1_3" class="Duck">
+        <property name="name" value="s3"  />
+        <property name="age" value="18" />
+    </bean>
+
+    <bean id="shop" class="DuckShop">
+        <property name="ducks">
+            <list>
+                <ref bean="d1_1"/>
+                <ref bean="d1_2"/>
+                <ref bean="d1_3"/>
+            </list>
+        </property>
+    </bean>
+
+
 </beans>
