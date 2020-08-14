@@ -135,4 +135,14 @@ public class DishDao {
         }
         return null;
     }
+
+   /* public static void main(String[] args) throws OrderSystemException {
+        DishDao dishDao = new DishDao();
+        Dish dish = new Dish();
+        *//*dish.setName("hrs");
+        dish.setPrice(1225);
+        dishDao.Add(dish);*//*
+        System.out.println(dishDao.selectById(2));
+        System.out.println(dishDao.SelectAll());
+    }*/
 }

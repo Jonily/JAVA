@@ -89,7 +89,7 @@ public class UserDao {
                 user.setUserId(resultSet.getInt("userId"));
                 user.setName(resultSet.getString("name"));
                 user.setPassword(resultSet.getString("password"));
-                user.setUserId(resultSet.getInt("isAdmin"));
+                user.setIsAdmin(resultSet.getInt("isAdmin"));
 
                 return  user;
             }
@@ -102,19 +102,19 @@ public class UserDao {
         return null;
     }
 
-    public static void main(String[] args) throws OrderSystemException {
+   /* public static void main(String[] args) throws OrderSystemException {
         UserDao userDao = new UserDao();
 
         User user = new User();
-     /*   user.setName("hhh");
+     *//*   user.setName("hhh");
         user.setPassword("123");
         user.setIsAdmin(0);
-        userDao.add(user);*/
-        userDao.selectByName("hhh");
+        userDao.add(user);*//*
+        user = userDao.selectByName("hhh");
         //user = userDao.selectById(1);
         System.out.println(user);
 
-    }
+    }*/
 
 
 
