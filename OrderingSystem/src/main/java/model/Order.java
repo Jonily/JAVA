@@ -52,4 +52,16 @@ public class Order {
     public void setDishList(List<Dish> dishList) {
         this.dishList = dishList;
     }
+
+    @Override
+    public String toString() {
+        return "Order{" +
+                "orderId=" + orderId +
+                ", userId=" + userId +
+                ", time=" + time +
+                ", isDone=" + isDone +
+                ", dishList=" + dishList +
+                '}';
+    }
 }
+

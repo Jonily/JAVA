@@ -1,9 +1,10 @@
 create database order_system;
-user order_system;
+use order_system;
 
 drop table if exists dishes;
 create table dishes(
     dishId int primary key auto_increment,
+    name varchar (50)unique ,
     price int --以分为单位，使用int表示，尽量不用double
 
 );
@@ -11,7 +12,7 @@ create table dishes(
 drop table if exists user;
 create table user(
     userId int primary key auto_increment,
-    name varchar (50),
+    name varchar (50)unique ,
     password varchar (50),
     isAdmin int --是否是管理员，0 不是 1是
 );

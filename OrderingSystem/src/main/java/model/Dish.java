@@ -28,4 +28,13 @@ public class Dish {
     public void setPrice(int price) {
         this.price = price;
     }
+
+    @Override
+    public String toString() {
+        return "Dish{" +
+                "dishId=" + dishId +
+                ", name='" + name + '\'' +
+                ", price=" + price +
+                '}';
+    }
 }
