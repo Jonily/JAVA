@@ -6,6 +6,7 @@ package DAO;
 // 4.查看订单的详细信息
 // 5.修改订单状态(订单是否已经完成)
 
+import com.sun.deploy.util.OrderedHashSet;
 import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
 import model.DBUtil;
 import model.Dish;
@@ -29,13 +30,10 @@ public class OrderDao {
         //1、先操作order_user表
         addOrderUser(order);
 
-
         //2、再操作order_dish表
         //执行add，java代码中order对象中的orderId为空
         //为了解决这个问题,就需要在插入记录的同时,获取到自增主键的值.
         addOrderDish(order);
-
-
 
     }
 
@@ -45,7 +43,7 @@ public class OrderDao {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql ="insert into (order_user) values (null,?,now(),0);";
+        String sql ="insert into order_user values (null,?,now(),0);";
 
         connection = DBUtil.getConnection();
         try {
@@ -72,8 +70,10 @@ public class OrderDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            throw new OrderSystemException("插入订单失败！");
+
         }finally {
-            DBUtil.close(connection,preparedStatement,null);
+            DBUtil.close(connection,preparedStatement,resultSet);
         }
 
     }
@@ -83,7 +83,7 @@ public class OrderDao {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
 
-        String sql ="insert into (order_user) values (?,?);";
+        String sql ="insert into order_user values (?,?);";
 
         connection = DBUtil.getConnection();
         try {
@@ -358,6 +358,13 @@ public class OrderDao {
         }
 
     }
+
+/*    public static void main(String[] args) {
+        OrderDao orderDao = new OrderDao();
+        Order order = new Order();
+        order.
+        orderDao.add();
+    }*/
 
 
 }

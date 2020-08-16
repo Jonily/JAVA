@@ -1,5 +1,5 @@
 
-   import org.opencv.core.*;
+import org.opencv.core.*;
 import org.opencv.highgui.HighGui;
 import org.opencv.imgcodecs.Imgcodecs;
 import org.opencv.imgproc.Imgproc;
@@ -17,7 +17,7 @@ import org.opencv.objdetect.CascadeClassifier;
             //1 读取OpenCV自带的人脸识别特征XML文件
             CascadeClassifier faceCV = new CascadeClassifier("D:\\javaProgram\\opencv\\sources\\data\\haarcascades\\haarcascade_frontalface_alt.xml");
             //2 读取测试图片
-            Mat image = Imgcodecs.imread("D:\\javaResource\\images\\3.jpg");
+            Mat image = Imgcodecs.imread("D:\\javaResource\\images\\5.jpg");
             //3 特征匹配
             MatOfRect face = new MatOfRect();
             faceCV.detectMultiScale(image, face);
@@ -35,6 +35,7 @@ import org.opencv.objdetect.CascadeClassifier;
         }
 
         public static void main(String[] args) {
+
             face();
         }
     }

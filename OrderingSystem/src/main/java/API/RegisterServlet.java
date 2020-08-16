@@ -56,6 +56,8 @@ public class RegisterServlet extends HttpServlet {
             user.setPassword(request.password);
             user.setIsAdmin(0);
             userDao.add(user);
+            response.ok = 1;
+            response.reason ="";
         } catch (OrderSystemException e) {
             response.ok = 0;
             response.reason = e.getMessage();
@@ -65,7 +67,7 @@ public class RegisterServlet extends HttpServlet {
             resp.setContentType("application/json; charset=utf-8");
             resp.getWriter().write(jsonString);
             //顺序不能颠倒. 一旦先获取writer对象了,此时再修改
-            //icontentType等header的属性就无效了.
+            //contentType等header的属性就无效了.
 
         }
 
