@@ -6,8 +6,7 @@ package DAO;
 // 4.查看订单的详细信息
 // 5.修改订单状态(订单是否已经完成)
 
-import com.sun.deploy.util.OrderedHashSet;
-import com.sun.org.apache.bcel.internal.generic.ANEWARRAY;
+
 import model.DBUtil;
 import model.Dish;
 import model.Order;
@@ -26,118 +25,105 @@ public class OrderDao {
 //第一个表order_ user
 //第二个表order_ dish, 一个订单中可能会涉及点多个菜，就需要给这个表次性插入多 个记录。
 
+
+
     public void add(Order order) throws OrderSystemException {
-        //1、先操作order_user表
+        // 1. 先操作 order_user 表
         addOrderUser(order);
-
-        //2、再操作order_dish表
-        //执行add，java代码中order对象中的orderId为空
-        //为了解决这个问题,就需要在插入记录的同时,获取到自增主键的值.
+        // 2. 再操作 order_dish 表
+        //    执行 add 方法的时候, order 对象中的 orderId 字段还是空着的呢~~
+        //    这个字段要交给数据库, 由自增主键来决定.
         addOrderDish(order);
-
     }
 
-    //用户信息加入
     private void addOrderUser(Order order) throws OrderSystemException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
+        // 1. 先获取到数据库连接
+        Connection connection = DBUtil.getConnection();
+        // 2. 构造 SQL
+        String sql = "insert into order_user values(null, ?, now(), 0)";
+        PreparedStatement statement = null;
         ResultSet resultSet = null;
-
-        String sql ="insert into order_user values (null,?,now(),0);";
-
-        connection = DBUtil.getConnection();
         try {
-
-            //获取自增主键的值
-            preparedStatement = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-            //加上RETURNGENERATEDKEYS选项，插入的同时就会把数据库自动生成的自增主键的值获取到
-
-            preparedStatement.setInt(1,order.getUserId());
-
-            int ret = preparedStatement.executeUpdate();
-            if(ret != 1){
-                throw new OrderSystemException("插入订单失败！");
+            // 加上 RETURN_GENERATED_KEYS 选项, 插入的同时就会把数据库自动生成的自增主键的值获取到
+            statement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            statement.setInt(1, order.getUserId());
+            // 3. 执行 SQL
+            int ret = statement.executeUpdate();
+            if (ret != 1) {
+                throw new OrderSystemException("插入订单失败");
             }
-            //把自增主键读取出来
-            resultSet  = preparedStatement.getGeneratedKeys();
-            if(resultSet.next()){
-                order.setOrderId(resultSet.getInt(1));//自增的列为1 也可以通过名字获取
-                //自增主键加到order对象中
+            // 把自增主键的值给读取出来.
+            resultSet = statement.getGeneratedKeys();
+            if (resultSet.next()) {
+                // 理解参数 1. 读取 resultSet 的结果时, 可以使用列名, 也可以使用下标.
+                // 由于一个表中的自增列可以有多个. 返回的时候都返回回来了. 下标填成 1
+                // 就表示想获取到第一个自增列生成的值.
+                order.setOrderId(resultSet.getInt(1));
             }
-
-
-            System.out.println("插入订单第一步失败！");
-
+            System.out.println("插入订单第一步成功");
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new OrderSystemException("插入订单失败！");
-
-        }finally {
-            DBUtil.close(connection,preparedStatement,resultSet);
+            throw new OrderSystemException("插入订单失败");
+        } finally {
+            DBUtil.close(connection, statement, resultSet);
         }
-
     }
 
-    //菜品信息加入
+    // 把菜品信息给插入到表 order_dish 中.
     private void addOrderDish(Order order) throws OrderSystemException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
-        String sql ="insert into order_user values (?,?);";
-
-        connection = DBUtil.getConnection();
+        // 1. 获取数据库连接
+        Connection connection = DBUtil.getConnection();
+        // 2. 拼装 SQL 语句
+        String sql = "insert into order_dish values(?, ?)";
+        PreparedStatement statement = null;
         try {
-            connection.setAutoCommit(false);//关闭自动提交
-            preparedStatement = connection.prepareStatement(sql);
-            //由于一个订单对应多个菜品，就需要遍历Order中包含的菜品数组，把每个记录都取出
-            List<Dish>  dishList = order.getDishList();//遍历dishes给SQL添加多个 values 的值
-            for (Dish dish: dishList) {
-                //// OrderId 是在刚刚进行插入order_ user 表的时候，获取到的自增主键
-                preparedStatement.setInt(1,order.getOrderId());
-                preparedStatement.setInt(2,dish.getDishId());
-                preparedStatement.addBatch();//给sql新增一个片段
-                //给SQL新增了- -组values .就可以把多组数据合并成一一个 SQL语句了.
+            // 3. 关闭自动提交
+            connection.setAutoCommit(false);
+            statement = connection.prepareStatement(sql);
+            // 由于一个订单对应到多个菜品, 就需要遍历 Order 中包含的菜品数组, 把每个记录都取出来
+            // 4. 遍历 dishes 给 SQL 添加多个 values 的值
+            List<Dish> dishes = order.getDishList();
+            for (Dish dish : dishes)  {
+                // OrderId 是在刚刚进行插入 order_user 表的时候, 获取到的自增主键
+                statement.setInt(1, order.getOrderId());
+                statement.setInt(2, dish.getDishId());
+                statement.addBatch(); // 给 sql 新增一个片段.
             }
-            preparedStatement.executeBatch();// 把刚才的sq1进行执行（不是真正执行），
-            connection.commit();//真正执行 发送给服务器
-            //手动关闭autoCommit 就可以一次给服务器发送多个SQL来执行了，
-
+            // 5. 执行 SQL (并不是真的执行)
+            statement.executeBatch(); // 把刚才的 sql 进行执行.
+            // 6. 发送给服务器 (真的执行), commit 可以去执行多个 SQL, 一次调用 commit 统一发给服务器.
+            connection.commit();
         } catch (SQLException e) {
             e.printStackTrace();
-            //如果上面操作异常，就认为整体的新增订单失败 回滚之前的插入order_user表的内容
+            // 如果上面的操作出现异常, 就认为整体的新增订单操作失败, 回滚之前的插入 order_user 表的内容
             deleteOrderUser(order.getOrderId());
-        }finally {
-            DBUtil.close(connection,preparedStatement,null);
+        } finally {
+            // 关闭数据库连接
+            DBUtil.close(connection, statement, null);
         }
     }
 
-    //用于删除order_user表中的记录
+    // 这个方法用于删除 order_user 表中的记录.
     private void deleteOrderUser(int orderId) throws OrderSystemException {
-        Connection connection = null;
-        PreparedStatement preparedStatement = null;
-
-        String sql ="delete from order_user where orderId=?";
-
-        connection = DBUtil.getConnection();
+        // 1. 获取数据库连接
+        Connection connection = DBUtil.getConnection();
+        // 2. 拼装 SQL
+        String sql = "delete from order_user where orderId = ?";
+        PreparedStatement statement = null;
         try {
-
-            //获取自增主键的值
-            preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setInt(1,orderId);
-
-            int ret = preparedStatement.executeUpdate();
-            if(ret != 1){
-                throw new OrderSystemException("回滚失败！");
+            statement = connection.prepareStatement(sql);
+            statement.setInt(1, orderId);
+            // 3. 执行 SQL
+            int ret = statement.executeUpdate();
+            if (ret != 1) {
+                throw new OrderSystemException("回滚失败");
             }
-
-            System.out.println("回滚成功！");
-
+            System.out.println("回滚成功");
         } catch (SQLException e) {
             e.printStackTrace();
-            throw new OrderSystemException("回滚失败！");
-
-        }finally {
-            DBUtil.close(connection,preparedStatement,null);
+            throw new OrderSystemException("回滚失败");
+        } finally {
+            DBUtil.close(connection, statement, null);
         }
     }
 
@@ -149,6 +135,8 @@ public class OrderDao {
 //菜品信息，反正有一个查看指定订单详细信息的接口
     //当前这个接口返回的Order 对象中，不包含dishes 详细数据的.
 //这样做是为了让代码更简单，更高效.
+
+
 
 
     public List<Order> selectAll(){
@@ -239,7 +227,7 @@ public class OrderDao {
 
     }
 
-  
+
 
     //根据orderid查对应Order对象基本信息
     //查找order_user表
@@ -299,7 +287,7 @@ public class OrderDao {
                 dishIds.add(resultSet.getInt("dishId"));
 
             }
-            
+
         } catch (SQLException e) {
             e.printStackTrace();
 
@@ -309,8 +297,8 @@ public class OrderDao {
         return dishIds;
 
     }
-    
-    
+
+
     private Order getDishDetail(Order order, List<Integer> dishIds) throws OrderSystemException {
         //准备好要返回的结果
         List<Dish> dishList = new ArrayList<>();
@@ -359,12 +347,14 @@ public class OrderDao {
 
     }
 
-/*    public static void main(String[] args) {
+/*
+    public static void main(String[] args) {
         OrderDao orderDao = new OrderDao();
         Order order = new Order();
-        order.
+        order.s
         orderDao.add();
-    }*/
+    }
+*/
 
 
 }

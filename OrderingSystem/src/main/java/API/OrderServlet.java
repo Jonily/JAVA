@@ -3,6 +3,7 @@ package API;
 import DAO.OrderDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.mysql.fabric.Response;
 import model.Dish;
 import model.Order;
 import model.User;
@@ -38,66 +39,162 @@ public class OrderServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("utf-8");
         Response response = new Response();
-
+        req.setCharacterEncoding("utf-8");
         try {
-            //1、判断登录状态
+            // 1. 检查用户登陆状态.
             HttpSession session = req.getSession(false);
-            if(session == null){
-                throw new OrderSystemException("您尚未登陆！");
+            if (session == null) {
+                throw new OrderSystemException("您尚未登陆");
             }
             User user = (User) session.getAttribute("user");
-            if(user == null){
-                throw new OrderSystemException("您尚未登陆！");
+            if (user == null) {
+                throw new OrderSystemException("您尚未登陆");
             }
-
-            //2、判断是否是管理员 管理员不能新增订单
-            if(user.getIsAdmin() == 1){
-                //管理员禁止新增
-                throw new OrderSystemException("您是管理不能新增！");
+            // 2. 判断用户是否是管理员
+            if (user.getIsAdmin() == 1) {
+                // 管理员, 就禁止新增订单
+                throw new OrderSystemException("您是管理员不能添加！");
             }
-
-            //3、读取body中的数据，进行解析
+            // 3. 读取 body 中的数据, 进行解析.
             String body = OrderSystemUtil.readBody(req);
-            //4、按照json格式解析body
-            Integer[] dishIds = gson.fromJson(body,Integer[].class);
-            //如果要转回成一个整型数组
-            //转换成list
-            //List<Integer> dishIds = gson.fromJson(body,new TypeToken<List<Integer>>() {}.getType());
-            //匿名内部类 此时必须借助TypeToken才可以正确获取到List的类型.
-/*
-                        Java泛型机制埋”下的隐患.
-                    所谓的"泛型" ,在底层存储的就是Object.
-                    泛型只是帮助用户自动的完成了类型转换和校验.
-                    当程序被编译成字节码的时候，已经没有泛型信息了.此时如果直接List<Integer> .class得不到预期的结果的.
-                    字节码中没有这个结构
-*/
-
-            //5、构造订单对象
+            // 4. 按照 JSON 格式解析 body
+            Integer[] dishIds = gson.fromJson(body, Integer[].class);
+//            List<Integer> dishIds = gson.fromJson(body, new TypeToken<List<Integer>>() {}.getType());
+            // 5. 构造订单对象, 此处 orderId, time, isDone, Dish 中的 name, price 这些都不需要填充
+            //    不影响订单插入.
             Order order = new Order();
             order.setUserId(user.getUserId());
-            List<Dish> dishList = new ArrayList<>();
-            for (Integer dishId: dishIds) {
+            List<Dish> dishes = new ArrayList<>();
+            for (Integer dishId : dishIds) {
                 Dish dish = new Dish();
                 dish.setDishId(dishId);
-                dishList.add(dish);
+                dishes.add(dish);
             }
-            order.setDishList(dishList);
-            //6、把order对象插入数据库中
+            order.setDishList(dishes);
+            // 6. 把 Order 对象插入到数据库中
             OrderDao orderDao = new OrderDao();
             orderDao.add(order);
-            response.ok=1;
-            response.reason="";
-
+            response.ok = 1;
+            response.reason = "";
         } catch (OrderSystemException e) {
-            response.ok=0;
-            response.reason=e.getMessage();
+            response.ok = 0;
+            response.reason = e.getMessage();
         } finally {
             resp.setContentType("application/json; charset=utf-8");
             String jsonString = gson.toJson(response);
             resp.getWriter().write(jsonString);
         }
+    }
 
+
+    //查看所有订单
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        resp.setContentType("application/json;charset=utf-8");
+        Response response = new Response();
+        try {
+            //1、验证用户登陆状态
+            HttpSession session = req.getSession(false);
+            if (session == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+            User user = (User) session.getAttribute("user");
+            if (user == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+            //2、判断用户是管理还普通用户
+            //3、读取orderId字段，看该字段是否存在
+            String orderIds =req.getParameter("orderId");
+            OrderDao orderDao = new OrderDao();
+
+            if(orderIds == null){
+                //4、查找数据库
+                List<Order> orderList = null;
+                if(user.getIsAdmin() == 0){
+                    //普通用户只能看自己的订单
+                    orderList = orderDao.selectByUserId(user.getUserId());
+
+                }else {
+                    //管理员查看所有订单
+                    orderList = orderDao.selectAll();
+
+                }
+                //4、构造响应
+                String jsonString = gson.toJson(orderList);
+                resp.getWriter().write(jsonString);
+            }else {
+
+                //4、查找指定订单
+                int orderId = Integer.parseInt(orderIds);
+                Order order = orderDao.selectById(orderId);
+
+                //如果是普通用户，查找时发现自身的userId和订单的userId不同
+                //这种就返回一个出数据  如果是管理员才能看到所有用户的订单
+
+                if(user.getIsAdmin() == 0 &&
+                        order.getUserId() != user.getUserId()){
+                    throw new OrderSystemException("当年您无权查看其他人的订单");
+
+                }
+                String jsonString = gson.toJson(order);
+                resp.getWriter().write(jsonString);
+
+            }
+
+        } catch (OrderSystemException e) {
+            //5、异常处理
+            response.ok = 0;
+            response.reason=e.getMessage();
+            String jsonString = gson.toJson(response);
+            resp.getWriter().write(jsonString);
+        }
+    }
+
+
+    //修改订单状态
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        Response response = new Response();
+        req.setCharacterEncoding("utf-8");
+        try {
+            // 1. 检查用户登陆状态.
+            HttpSession session = req.getSession(false);
+            if (session == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+            User user = (User) session.getAttribute("user");
+            if (user == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+            // 2. 判断用户是否是管理员
+            if (user.getIsAdmin() == 0) {
+                // 管理员, 就禁止新增订单
+                throw new OrderSystemException("您不是管理员不能修改！");
+            }
+            // 3. 读取请求中的orderId 和 idDone.
+            String orderIdstr = req.getParameter("orderId");
+            String isDoneStr = req.getParameter("isDone");
+            if(orderIdstr == null || isDoneStr == null){
+                throw new OrderSystemException("参数有误！");
+
+            }
+            // 4. 修改数据库
+             OrderDao orderDao = new OrderDao();
+            int orderId = Integer.parseInt(orderIdstr);
+            int isDone = Integer.parseInt(isDoneStr);
+            orderDao.changeState(orderId,isDone);
+            // 5. 返回响应
+            response.ok = 1;
+            response.reason = "";
+        } catch (OrderSystemException e) {
+            response.ok = 0;
+            response.reason = e.getMessage();
+        } finally {
+            resp.setContentType("application/json; charset=utf-8");
+            String jsonString = gson.toJson(response);
+            resp.getWriter().write(jsonString);
+        }
     }
 }
