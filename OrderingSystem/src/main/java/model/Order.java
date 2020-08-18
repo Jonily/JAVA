@@ -11,7 +11,7 @@ public class Order {
     private int userId;
     private Timestamp time;//时间戳
     private int isDone;
-    private List<Dish> dishList ;//一个订单中包含了很多菜
+    private List<Dish> dishes ;//一个订单中包含了很多菜
 
     public int getOrderId() {
         return orderId;
@@ -45,23 +45,14 @@ public class Order {
         this.isDone = isDone;
     }
 
-    public List<Dish> getDishList() {
-        return dishList;
+    public List<Dish> getDishes() {
+        return dishes;
     }
 
-    public void setDishList(List<Dish> dishList) {
-        this.dishList = dishList;
+    public void setDishes(List<Dish> dishes) {
+        this.dishes = dishes;
     }
 
-    @Override
-    public String toString() {
-        return "Order{" +
-                "orderId=" + orderId +
-                ", userId=" + userId +
-                ", time=" + time +
-                ", isDone=" + isDone +
-                ", dishList=" + dishList +
-                '}';
-    }
+
 }
 

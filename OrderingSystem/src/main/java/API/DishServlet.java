@@ -130,6 +130,8 @@ public class DishServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        List<Dish> dishList = new ArrayList<>();
+
         req.setCharacterEncoding("utf-8");
         resp.setContentType("application/json; charset=utf-8");
         Response response = new Response();
@@ -146,7 +148,6 @@ public class DishServlet extends HttpServlet {
 
             }
             //2、从数据库中读取数据
-            List<Dish> dishList = new ArrayList<>();
             DishDao dishDao = new DishDao();
             dishList = dishDao.SelectAll();
             //3、把结果返回
@@ -154,9 +155,9 @@ public class DishServlet extends HttpServlet {
             resp.getWriter().write(jsonString);
 
         } catch (OrderSystemException e) {
-            response.ok = 0;
-            response.reason=e.getMessage();
-            String jsonString = gson.toJson(response);
+
+            //失败的时候返回一个空的数组
+            String jsonString = gson.toJson(dishList);
             resp.getWriter().write(jsonString);
         }
     }

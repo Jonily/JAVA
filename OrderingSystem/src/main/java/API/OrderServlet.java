@@ -3,7 +3,6 @@ package API;
 import DAO.OrderDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.mysql.fabric.Response;
 import model.Dish;
 import model.Order;
 import model.User;
@@ -25,18 +24,16 @@ import java.util.List;
 public class OrderServlet extends HttpServlet {
     private Gson gson = new GsonBuilder().create();
 
-    //这个类代表订单的相关操作
-    //只有第一个有body 新增订单
-    //body是数组 不需要专门创建一个类表示body内容
-    static class Response{
+    // 这个类代表订单相关操作.
+    // 仔细观察前面约定的接口发现, 这四个 API 中, 只有新增订单是带 body 的.
+    // 而且 body 又是整数数组. 不需要创建专门的类来表示请求的 body 内容了.
+
+    static class Response {
         public int ok;
         public String reason;
-
     }
 
-
-    //新增订单 只有普通用户可以
-
+    // 对应第 8 个 API, 新增订单. (普通用户才能新增, 管理员不能新增)
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         Response response = new Response();
@@ -54,7 +51,7 @@ public class OrderServlet extends HttpServlet {
             // 2. 判断用户是否是管理员
             if (user.getIsAdmin() == 1) {
                 // 管理员, 就禁止新增订单
-                throw new OrderSystemException("您是管理员不能添加！");
+                throw new OrderSystemException("您是管理员");
             }
             // 3. 读取 body 中的数据, 进行解析.
             String body = OrderSystemUtil.readBody(req);
@@ -71,7 +68,7 @@ public class OrderServlet extends HttpServlet {
                 dish.setDishId(dishId);
                 dishes.add(dish);
             }
-            order.setDishList(dishes);
+            order.setDishes(dishes);
             // 6. 把 Order 对象插入到数据库中
             OrderDao orderDao = new OrderDao();
             orderDao.add(order);
@@ -87,15 +84,15 @@ public class OrderServlet extends HttpServlet {
         }
     }
 
-
-    //查看所有订单
+    // 对应到第 9 个 API, 查看所有订单.
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("utf-8");
-        resp.setContentType("application/json;charset=utf-8");
+        resp.setContentType("application/json; charset=utf-8");
         Response response = new Response();
+        List<Order> orders = new ArrayList<>();
         try {
-            //1、验证用户登陆状态
+            // 1. 验证用户登陆状态.
             HttpSession session = req.getSession(false);
             if (session == null) {
                 throw new OrderSystemException("您尚未登陆");
@@ -104,62 +101,52 @@ public class OrderServlet extends HttpServlet {
             if (user == null) {
                 throw new OrderSystemException("您尚未登陆");
             }
-            //2、判断用户是管理还普通用户
-            //3、读取orderId字段，看该字段是否存在
-            String orderIds =req.getParameter("orderId");
+            // 2. 读取 orderId 字段, 看该字段是否存在.
             OrderDao orderDao = new OrderDao();
-
-            if(orderIds == null){
-                //4、查找数据库
-                List<Order> orderList = null;
-                if(user.getIsAdmin() == 0){
-                    //普通用户只能看自己的订单
-                    orderList = orderDao.selectByUserId(user.getUserId());
-
-                }else {
-                    //管理员查看所有订单
-                    orderList = orderDao.selectAll();
-
+            String orderIdStr = req.getParameter("orderId");
+            if (orderIdStr == null) {
+                // 3. 查找数据库, 查找所有订单
+                // 判断用户是管理员还是普通用户
+                if (user.getIsAdmin() == 0) {
+                    // 普通用户, 只查看自己的订单
+                    orders = orderDao.selectByUserId(user.getUserId());
+                } else {
+                    // 管理员, 查看所有订单
+                    orders = orderDao.selectAll();
                 }
-                //4、构造响应
-                String jsonString = gson.toJson(orderList);
+                // 4. 构造响应结果
+                String jsonString = gson.toJson(orders);
                 resp.getWriter().write(jsonString);
-            }else {
-
-                //4、查找指定订单
-                int orderId = Integer.parseInt(orderIds);
+            } else {
+                // 3. 查找数据库, 查找指定订单.
+                int orderId = Integer.parseInt(orderIdStr);
                 Order order = orderDao.selectById(orderId);
-
-                //如果是普通用户，查找时发现自身的userId和订单的userId不同
-                //这种就返回一个出数据  如果是管理员才能看到所有用户的订单
-
-                if(user.getIsAdmin() == 0 &&
-                        order.getUserId() != user.getUserId()){
+                // [此处还可以有个小小的改进]
+                // 如果是普通用户, 查找时发现自身的 userId 和订单的 userId 不相符,
+                // 这种就返回一个出错数据.
+                // 如果是管理员, 才允许查看所有用户的订单
+                if (user.getIsAdmin() == 0
+                        && order.getUserId() != user.getUserId()) {
                     throw new OrderSystemException("当年您无权查看其他人的订单");
-
                 }
+                // 4. 构造响应结果
                 String jsonString = gson.toJson(order);
                 resp.getWriter().write(jsonString);
-
             }
-
         } catch (OrderSystemException e) {
-            //5、异常处理
-            response.ok = 0;
-            response.reason=e.getMessage();
-            String jsonString = gson.toJson(response);
+            // 5. 处理异常情况
+            String jsonString = gson.toJson(orders);
             resp.getWriter().write(jsonString);
         }
     }
 
-
-    //修改订单状态
+    // 对应到第 11 个 API, 修改订单状态.
     @Override
     protected void doPut(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        Response response = new Response();
         req.setCharacterEncoding("utf-8");
+        Response response = new Response();
         try {
-            // 1. 检查用户登陆状态.
+            // 1. 检查用户的登陆状态.
             HttpSession session = req.getSession(false);
             if (session == null) {
                 throw new OrderSystemException("您尚未登陆");
@@ -170,22 +157,20 @@ public class OrderServlet extends HttpServlet {
             }
             // 2. 判断用户是否是管理员
             if (user.getIsAdmin() == 0) {
-                // 管理员, 就禁止新增订单
-                throw new OrderSystemException("您不是管理员不能修改！");
+                throw new OrderSystemException("您不是管理员");
             }
-            // 3. 读取请求中的orderId 和 idDone.
-            String orderIdstr = req.getParameter("orderId");
+            // 3. 读取请求中的字段 orderId 和 isDone
+            String orderIdStr = req.getParameter("orderId");
             String isDoneStr = req.getParameter("isDone");
-            if(orderIdstr == null || isDoneStr == null){
-                throw new OrderSystemException("参数有误！");
-
+            if (orderIdStr == null || isDoneStr == null) {
+                throw new OrderSystemException("参数有误");
             }
-            // 4. 修改数据库
-             OrderDao orderDao = new OrderDao();
-            int orderId = Integer.parseInt(orderIdstr);
+            // 4. 修改数据库.
+            OrderDao orderDao = new OrderDao();
+            int orderId = Integer.parseInt(orderIdStr);
             int isDone = Integer.parseInt(isDoneStr);
-            orderDao.changeState(orderId,isDone);
-            // 5. 返回响应
+            orderDao.changeState(orderId, isDone);
+            // 5. 返回响应结果.
             response.ok = 1;
             response.reason = "";
         } catch (OrderSystemException e) {

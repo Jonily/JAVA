@@ -3,9 +3,9 @@ package test;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
+// 演示 Gson 的用法
 public class TestGson {
-
-   static class Student{
+    static class Student {
         private String name;
         private int id;
         private double score;
@@ -16,21 +16,17 @@ public class TestGson {
             this.score = score;
         }
     }
-  /*  public static void main(String[] args) {
-        //1、实例化Gson对象（工厂模式）
+
+    public static void main(String[] args) {
+        // 1. 实例化 Gson 对象 (工厂模式)
         Gson gson = new GsonBuilder().create();
-
-        //2、把一个对象转成json字符串
-        Student student = new Student("hh",10,45.6);
-        String jsonString = gson.toJson(student);//把student转成json
-        System.out.println(jsonString);
-
-        //3、把json转成对象
-        String s = "{\"name\":\"hh\",\"id\":10,\"score\":45.6}";
-        Student student1 = gson.fromJson(s,Student.class);
-        System.out.println(student1.id+","+student1.name+","+student1.score);
-    }*//*尤其是在把JSON字符串解析成对象的时候,
-    GSON这个库就需要知道目标的对象中都有哪些属性,每个名字叫啥,类型是啥.*//*
-
-*/
+        // 2. 把一个对象转成 JSON 字符串.
+//        Student student = new Student("汤老湿", 10, 99.5);
+//        String jsonString = gson.toJson(student);
+//        System.out.println(jsonString);
+        // 3. 把一个 JSON 字符串转回成一个对象
+        String str = "{\"name\":\"汤老湿\",\"id\":10,\"score\":99.5}";
+        Student s = gson.fromJson(str, Student.class);
+        System.out.println(s.id + ", " + s.name + ", " + s.score);
+    }
 }

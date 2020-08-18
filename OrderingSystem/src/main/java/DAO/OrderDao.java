@@ -82,7 +82,7 @@ public class OrderDao {
             statement = connection.prepareStatement(sql);
             // 由于一个订单对应到多个菜品, 就需要遍历 Order 中包含的菜品数组, 把每个记录都取出来
             // 4. 遍历 dishes 给 SQL 添加多个 values 的值
-            List<Dish> dishes = order.getDishList();
+            List<Dish> dishes = order.getDishes();
             for (Dish dish : dishes)  {
                 // OrderId 是在刚刚进行插入 order_user 表的时候, 获取到的自增主键
                 statement.setInt(1, order.getOrderId());
@@ -309,7 +309,7 @@ public class OrderDao {
             dishList.add(dish);
         }
         //3、把dishList设置到 order 对象中
-        order.setDishList(dishList);
+        order.setDishes(dishList);
         return order;
     }
 
@@ -347,14 +347,12 @@ public class OrderDao {
 
     }
 
-/*
-    public static void main(String[] args) {
+  /*  public static void main(String[] args) {
         OrderDao orderDao = new OrderDao();
         Order order = new Order();
-        order.s
+
         orderDao.add();
-    }
-*/
+    }*/
 
 
 }
