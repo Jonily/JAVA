@@ -130,7 +130,7 @@
 
             <v-row v-show="!login.isLogin">
                 <v-col>
-                    <v-card class="pa-2 text-center">请先登陆!</v-card>
+                    <v-card class="pa-2 text-center">请管理员登陆!</v-card>
                 </v-col>
             </v-row>
             <v-row justify="center">
@@ -283,6 +283,7 @@
             },
         },
         methods: {
+
             loginAccount() {
                 console.log("login");
                 $.ajax({
