@@ -104,7 +104,7 @@
                             <v-icon>mdi-food</v-icon> {{ dish.name }}
                         </td>
                         <td>
-                            <v-icon>mdi-cash</v-icon> {{ dish.price }}
+                            <v-icon>mdi-cash</v-icon> {{ dish.price/100}}
                         </td>
                         <td>
                             <v-switch v-model="dish.isSelected"></v-switch>

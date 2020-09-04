@@ -82,7 +82,7 @@
                             <v-icon>mdi-food</v-icon> {{ dish.name }}
                         </td>
                         <td>
-                            <v-icon>mdi-cash</v-icon> {{ dish.price }}
+                            <v-icon>mdi-cash</v-icon> {{ dish.price/100 }}
                         </td>
                         <td>
                             <v-btn color="primary" v-on:click="deleteDish(dish.dishId)">删除</v-btn>
