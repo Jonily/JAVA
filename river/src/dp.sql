@@ -10,5 +10,7 @@ create table river
     river_status varchar(30) not null ,
     primary key (river_num)
 );
+alter table river
+    add constraint myun unique (river_name);
 
 

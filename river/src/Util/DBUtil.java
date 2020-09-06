@@ -9,7 +9,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 public class DBUtil {
-    private static String url = "jdbc:mysql:river_control//127.0.0.1:3306/?characterEncoding=utf-8&useSSL=true";
+    private static String url ="jdbc:mysql://127.0.0.1:3306/river_control?characterEncoding=utf-8&useSSL=true";
     private static String username = "root";
     private static String password = "123456";
 

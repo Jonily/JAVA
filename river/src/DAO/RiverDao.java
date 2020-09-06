@@ -11,7 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class riverMaking {
+public class RiverDao {
     public void addRiver(River river) throws riverException {
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -130,7 +130,7 @@ public class riverMaking {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql ="select * from dishes where river_num = ?";
+        String sql ="select * from river where river_num = ?";
         connection = DBUtil.getConnect();
 
         try {
@@ -167,7 +167,7 @@ public class riverMaking {
         PreparedStatement preparedStatement = null;
         ResultSet resultSet = null;
 
-        String sql ="select * from dishes where river_namw = ?";
+        String sql ="select * from river where river_name = ?";
         connection = DBUtil.getConnect();
 
         try {
@@ -292,6 +292,26 @@ public class riverMaking {
         }
     }
 
+}
+class Test{
+    public static void main(String[] args) throws riverException {
+        RiverDao riverDao = new RiverDao();
+        River river = new River();
+        /*river.setRiver_name("黄河");
+        river.setRiver_location("青藏高原");
+        river.setRiver_length("5464");
+        river.setRiver_class("黄河水系");
+        river.setRiver_status("泥沙严重");
+        riverDao.addRiver(river);*/
+        //riverDao.updateRiverLocationByName("黄河","四川");
+       /* riverDao.updateRiverClassByName("黄河","泥沙");
+        riverDao.updateRiverLengthByName("黄河","151615");
+        riverDao.updateRiverStatusByName("黄河","奔腾");*/
+        //river = riverDao.selectByName("黄河");
+       // river = riverDao.selectByNum(1);
+        //System.out.println(river);
+        //riverDao.deleteRiverByName("黄河");
+       // riverDao.deleteRiverByNum(2);
 
-
+    }
 }
