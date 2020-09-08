@@ -11,9 +11,11 @@ public class Main {
          */
          ApplicationContext context = new
                 ClassPathXmlApplicationContext("applications.xml");
-/*
+
+
+          //通过bean的名称获取bean对象，bean名称就是xml中bean的id
          String bit = (String) context.getBean("hhh");
-       // String bit1 = (String) context.getBean("java.lang.String#0");
+       // String bit1 = (String) context.getBean("java.lang.String");
         System.out.println(bit);
 
         //通过类型获取bean对象，如果该类型有多个对象，就会报错，只支持一个
@@ -24,8 +26,7 @@ public class Main {
         System.out.println(duck);
 
         Duck2 duck2 = (Duck2)context.getBean("d2");
-        System.out.println(duck2);*/
-
+        System.out.println(duck2);
      /*   Duck3 duck3 = (Duck3)context.getBean("duck1");
         System.out.println(duck3);*/
 /*
