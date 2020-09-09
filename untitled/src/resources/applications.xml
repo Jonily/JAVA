@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+                           https://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!--通过bean标签定义bean对象，Spring Bean 容器是通过id来进行管理的，id相当于bean的名称，Spring可以通过id找到bean对象
+    如果没有提供id，默认以类名首字母小写作为id
+    默认是单例模式-->
+    <!--通过无参的构造方法创建一个对象， class，如果该类型没有无参的构造方法，就会报错-->
+
+    <bean id = "a1" class="Animals">
+        <property name="name" value="狗"/>
+        <property name="age" value="2"/>
+        <property name="next" ref="a2"/>
+
+    </bean>
+
+    <bean id = "a2" class="Animals">
+        <property name="name" value="猫"/>
+        <property name="age" value="3"/>
+        <property name="next" ref="a3"/>
+
+    </bean>
+
+    <bean id = "a3" class="Animals">
+        <property name="name" value="鸭"/>
+        <property name="age" value="4"/>
+        <property name="next" ref="a4"/>
+
+    </bean>
+
+    <bean id = "a4" class="Animals">
+        <property name="name" value="鸡"/>
+        <property name="age" value="9"/>
+    </bean>
+
+
+    <bean id = "b1" class="Animals1">
+        <property name="name" value="狗"/>
+        <property name="age" value="2"/>
+
+    </bean>
+
+    <bean id = "b2" class="Animals1">
+        <property name="name" value="猫"/>
+        <property name="age" value="3"/>
+
+    </bean>
+
+    <bean id = "b3" class="Animals1">
+        <property name="name" value="鸭"/>
+        <property name="age" value="4"/>
+
+    </bean>
+
+    <bean id = "b4" class="Animals1">
+        <property name="name" value="鸡"/>
+        <property name="age" value="9"/>
+    </bean>
+
+    <!--使用List将animals中的动物放到ZOO中以链表形式打印-->
+    <bean id="zoo" class="Zoo">
+        <property name="animalsList">
+            <list>
+                <ref bean="b1"/>
+                <ref bean="b2"/>
+                <ref bean="b3"/>
+                <ref bean="b4"/>
+
+
+            </list>
+        </property>
+    </bean>
+
+</beans>
