@@ -36,7 +36,7 @@ public class OrderDao {
         addOrderDish(order);
     }
 
-    private void addOrderUser(Order order) throws OrderSystemException {
+    public void addOrderUser(Order order) throws OrderSystemException {
         // 1. 先获取到数据库连接
         Connection connection = DBUtil.getConnection();
         // 2. 构造 SQL
@@ -70,7 +70,7 @@ public class OrderDao {
     }
 
     // 把菜品信息给插入到表 order_dish 中.
-    private void addOrderDish(Order order) throws OrderSystemException {
+    public void addOrderDish(Order order) throws OrderSystemException {
         // 1. 获取数据库连接
         Connection connection = DBUtil.getConnection();
         // 2. 拼装 SQL 语句
@@ -96,16 +96,23 @@ public class OrderDao {
         } catch (SQLException e) {
             e.printStackTrace();
             // 如果上面的操作出现异常, 就认为整体的新增订单操作失败, 回滚之前的插入 order_user 表的内容
-            deleteOrderUser(order.getOrderId());
+            deleteOrder(order.getOrderId());
         } finally {
             // 关闭数据库连接
             DBUtil.close(connection, statement, null);
         }
     }
 
-    // 这个方法用于删除 order_user 表中的记录.
-    private void deleteOrderUser(int orderId) throws OrderSystemException {
+    // 这个方法用于删除 order 表中的记录.
+    public void delete(int orderId) throws OrderSystemException {
+
+        deleteOrderDish(orderId);
+        deleteOrder(orderId);
+
+    }
+    public void deleteOrder(int orderId) throws OrderSystemException {
         // 1. 获取数据库连接
+
         Connection connection = DBUtil.getConnection();
         // 2. 拼装 SQL
         String sql = "delete from order_user where orderId = ?";
@@ -124,6 +131,28 @@ public class OrderDao {
             throw new OrderSystemException("回滚失败");
         } finally {
             DBUtil.close(connection, statement, null);
+        }
+
+    }
+
+    //方法用于删除菜
+    public void deleteOrderDish(int orderId) throws OrderSystemException {
+        Connection connection = DBUtil.getConnection();
+        PreparedStatement preparedStatement = null;
+        String sql = "delete from order_dish where orderId = ?";
+        try{
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,orderId);
+            int ret = preparedStatement.executeUpdate();
+
+        /*    if (ret == 0) {
+                throw new OrderSystemException("删除失败");
+            }*/
+            System.out.println("删除成功");
+                } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            DBUtil.close(connection,preparedStatement,null);
         }
     }
 
@@ -231,7 +260,7 @@ public class OrderDao {
 
     //根据orderid查对应Order对象基本信息
     //查找order_user表
-    private Order buildOrder(int orderId) {
+    public Order buildOrder(int orderId) {
 
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -267,7 +296,7 @@ public class OrderDao {
     }
 
     //查找order_dish
-    private List<Integer> selectDishIds(int orderId) {
+    public List<Integer> selectDishIds(int orderId) {
         List<Integer> dishIds = new ArrayList<>();
         Connection connection = null;
         PreparedStatement preparedStatement = null;
@@ -299,7 +328,7 @@ public class OrderDao {
     }
 
 
-    private Order getDishDetail(Order order, List<Integer> dishIds) throws OrderSystemException {
+    public Order getDishDetail(Order order, List<Integer> dishIds) throws OrderSystemException {
         //准备好要返回的结果
         List<Dish> dishList = new ArrayList<>();
         //2、遍历dishIds 再dishes表中 查
@@ -347,11 +376,11 @@ public class OrderDao {
 
     }
 
-  /*  public static void main(String[] args) {
+/*    public static void main(String[] args) throws OrderSystemException {
         OrderDao orderDao = new OrderDao();
         Order order = new Order();
 
-        orderDao.add();
+        orderDao.delete(2);
     }*/
 
 

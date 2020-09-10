@@ -25,6 +25,16 @@
             </v-list-item>
         </v-list>
 
+        <v-list-item href="index.html">
+            <v-list-item-action>
+                <v-icon>mdi-login</v-icon>
+            </v-list-item-action>
+            <v-list-item-content>
+                <v-list-item-title>返回</v-list-item-title>
+            </v-list-item-content>
+        </v-list-item>
+
+
         <v-list dense v-show="login.isLogin">
             <v-list-item link>
                 <v-list-item-action>
@@ -82,7 +92,7 @@
                             <v-icon>mdi-food</v-icon> {{ dish.name }}
                         </td>
                         <td>
-                            <v-icon>mdi-cash</v-icon> {{ dish.price/100 }}
+                            <v-icon>mdi-cash</v-icon> {{ dish.price }}
                         </td>
                         <td>
                             <v-btn color="primary" v-on:click="deleteDish(dish.dishId)">删除</v-btn>
@@ -109,6 +119,8 @@
                         <th class="text-left">状态</th>
                         <th class="text-left">时间</th>
                         <th class="text-left">详情</th>
+                        <th class="text-left">删除</th>
+
                     </tr>
                     </thead>
                     <tbody>
@@ -122,6 +134,10 @@
                         <td>{{order.time}}</td>
                         <td>
                             <v-btn color='primary' v-on:click='getOrderDetail(order.orderId)'>查看详情</v-btn>
+                        </td>
+
+                        <td>
+                            <v-btn color='primary' v-on:click='deleteOrderDetail(order.orderId)'>删除</v-btn>
                         </td>
                     </tr>
                     </tbody>
@@ -426,6 +442,22 @@
                         app.showAddDish = false;
                     }
                 })
+            },
+
+            deleteOrderDetail(orderId) {
+                console.log("deleteOrderDetail");
+                $.ajax({
+                    url: 'order?orderId=' + orderId,
+                    type: 'delete',
+                    success: function (data, status) {
+                        if (data.ok != 1) {
+                            alert("删除订单失败! " + data.reason);
+                            return;
+                        }
+                        app.getDishes();
+                        alert("删除订单成功!");
+                    }
+                });
             },
             deleteDish(dishId) {
                 console.log("deleteDish");

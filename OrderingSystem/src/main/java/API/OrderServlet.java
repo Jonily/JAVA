@@ -1,5 +1,6 @@
 package API;
 
+import DAO.DishDao;
 import DAO.OrderDao;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -170,6 +171,43 @@ public class OrderServlet extends HttpServlet {
             int orderId = Integer.parseInt(orderIdStr);
             int isDone = Integer.parseInt(isDoneStr);
             orderDao.changeState(orderId, isDone);
+            // 5. 返回响应结果.
+            response.ok = 1;
+            response.reason = "";
+        } catch (OrderSystemException e) {
+            response.ok = 0;
+            response.reason = e.getMessage();
+        } finally {
+            resp.setContentType("application/json; charset=utf-8");
+            String jsonString = gson.toJson(response);
+            resp.getWriter().write(jsonString);
+        }
+    }
+
+    @Override
+    protected void doDelete(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        req.setCharacterEncoding("utf-8");
+        Response response = new Response();
+        try{
+            // 1. 检查用户的登陆状态.
+            HttpSession session = req.getSession(false);
+            if (session == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+            User user = (User) session.getAttribute("user");
+            if (user == null) {
+                throw new OrderSystemException("您尚未登陆");
+            }
+
+            // 3. 读取请求中的字段 orderId
+            String orderIdStr = req.getParameter("orderId");
+            // 4. 修改数据库.
+            OrderDao orderDao = new OrderDao();
+
+            int orderId = Integer.parseInt(orderIdStr);
+
+            orderDao.delete(orderId);
+
             // 5. 返回响应结果.
             response.ok = 1;
             response.reason = "";
