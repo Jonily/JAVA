@@ -425,11 +425,12 @@
                     type: 'post',
                     data: JSON.stringify(dishIds),
                     success: function (data, status) {
-                        alert("下单成功!");
+                        if(data.ok == 0){
+                            alert("下单失败! "+data.reason);
+                            return;
+                        }
+                            alert("下单成功!");
                     },
-                    error: function (req, str) {
-                        alert("下单失败!");
-                    }
                 });
             },
             getOrderDetail(orderId) {

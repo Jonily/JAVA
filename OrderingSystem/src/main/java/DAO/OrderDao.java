@@ -295,7 +295,7 @@ public class OrderDao {
 
     }
 
-    //查找order_dish
+       //查找order_dish
     public List<Integer> selectDishIds(int orderId) {
         List<Integer> dishIds = new ArrayList<>();
         Connection connection = null;
@@ -326,6 +326,39 @@ public class OrderDao {
         return dishIds;
 
     }
+
+   /* //查找order_dish
+    public List<Integer> selectDish(int userId) {
+        List<Integer> dishIds = new ArrayList<>();
+        Connection connection = null;
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+
+        String sql ="select * from order_dish where orderId = (select orderId from order_user where userId = ?)";
+
+        connection = DBUtil.getConnection();
+        try {
+
+
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1,userId);
+
+            resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                dishIds.add(resultSet.getInt("dishId"));
+
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+
+        }finally {
+            DBUtil.close(connection,preparedStatement,resultSet);
+        }
+        return dishIds;
+
+    }*/
+
 
 
     public Order getDishDetail(Order order, List<Integer> dishIds) throws OrderSystemException {
@@ -376,12 +409,12 @@ public class OrderDao {
 
     }
 
-/*    public static void main(String[] args) throws OrderSystemException {
+ /*   public static void main(String[] args) throws OrderSystemException {
         OrderDao orderDao = new OrderDao();
         Order order = new Order();
 
-        orderDao.delete(2);
-    }*/
-
+        orderDao.selectDish(3);
+    }
+*/
 
 }

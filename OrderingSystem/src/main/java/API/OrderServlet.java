@@ -19,6 +19,7 @@ import javax.servlet.http.HttpSession;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @WebServlet("/order")
@@ -58,23 +59,36 @@ public class OrderServlet extends HttpServlet {
             String body = OrderSystemUtil.readBody(req);
             // 4. 按照 JSON 格式解析 body
             Integer[] dishIds = gson.fromJson(body, Integer[].class);
+
+               if(dishIds == null || dishIds.length == 0){
+                response.ok = 0;
+                response.reason = "未选择菜品，请重新下单!";
+            }else {
+
+                   // System.out.println( "数组" + Arrays.toString(dishIds));
 //            List<Integer> dishIds = gson.fromJson(body, new TypeToken<List<Integer>>() {}.getType());
-            // 5. 构造订单对象, 此处 orderId, time, isDone, Dish 中的 name, price 这些都不需要填充
-            //    不影响订单插入.
-            Order order = new Order();
-            order.setUserId(user.getUserId());
-            List<Dish> dishes = new ArrayList<>();
-            for (Integer dishId : dishIds) {
-                Dish dish = new Dish();
-                dish.setDishId(dishId);
-                dishes.add(dish);
-            }
-            order.setDishes(dishes);
-            // 6. 把 Order 对象插入到数据库中
-            OrderDao orderDao = new OrderDao();
-            orderDao.add(order);
-            response.ok = 1;
-            response.reason = "";
+                   // 5. 构造订单对象, 此处 orderId, time, isDone, Dish 中的 name, price 这些都不需要填充
+                   //    不影响订单插入.
+                   Order order = new Order();
+                   OrderDao orderDao = new OrderDao();
+
+
+                   order.setUserId(user.getUserId());
+                   List<Dish> dishes = new ArrayList<>();
+                   for (Integer dishId : dishIds) {
+                       Dish dish = new Dish();
+                       dish.setDishId(dishId);
+                       dishes.add(dish);
+                   }
+
+
+                   order.setDishes(dishes);
+                   // 6. 把 Order 对象插入到数据库中
+                   orderDao.add(order);
+                   response.ok = 1;
+                   response.reason = "";
+               }
+
         } catch (OrderSystemException e) {
             response.ok = 0;
             response.reason = e.getMessage();
