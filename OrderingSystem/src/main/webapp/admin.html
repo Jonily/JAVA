@@ -72,7 +72,7 @@
     </v-navigation-drawer>
 
     <v-app>
-        <v-app-bar app color="indigo" dark>
+        <v-app-bar app color="#cc3737" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>点餐系统</v-toolbar-title>
         </v-app-bar>
@@ -95,7 +95,7 @@
                             <v-icon>mdi-cash</v-icon> {{ dish.price }}
                         </td>
                         <td>
-                            <v-btn color="primary" v-on:click="deleteDish(dish.dishId)">删除</v-btn>
+                            <v-btn color="#ffc139" v-on:click="deleteDish(dish.dishId)">删除</v-btn>
                         </td>
                     </tr>
                     </tbody>
@@ -105,7 +105,7 @@
                 <v-col :col="11">
                 </v-col>
                 <v-col :cols="2">
-                    <v-btn color="primary" block v-on:click="showAddDish = true">新增菜品</v-btn>
+                    <v-btn color="#ffc139" block v-on:click="showAddDish = true">新增菜品</v-btn>
                 </v-col>
             </v-row>
 
@@ -133,11 +133,11 @@
                         </td>
                         <td>{{order.time}}</td>
                         <td>
-                            <v-btn color='primary' v-on:click='getOrderDetail(order.orderId)'>查看详情</v-btn>
+                            <v-btn color='#ffc139' v-on:click='getOrderDetail(order.orderId)'>查看详情</v-btn>
                         </td>
 
                         <td>
-                            <v-btn color='primary' v-on:click='deleteOrderDetail(order.orderId)'>删除</v-btn>
+                            <v-btn color='#ffc139' v-on:click='deleteOrderDetail(order.orderId)'>删除</v-btn>
                         </td>
                     </tr>
                     </tbody>
@@ -171,10 +171,10 @@
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="loginAccount()">登陆</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="loginAccount()">登陆</v-btn>
                                     </v-col>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="login.showLoginDialog = false">取消
+                                        <v-btn color="#ffc139" block v-on:click="login.showLoginDialog = false">取消
                                         </v-btn>
                                     </v-col>
                                 </v-row>
@@ -201,7 +201,7 @@
                             <tr>
                                 <td>总金额: {{curOrderPrice()}}</td>
                                 <td>
-                                    <v-btn color="primary" v-on:click="showCurOrder = false">关闭</v-btn>
+                                    <v-btn color="#ffc139" v-on:click="showCurOrder = false">关闭</v-btn>
                                 </td>
                             </tr>
                             </tbody>
@@ -230,10 +230,10 @@
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="addDish()">新增</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="addDish()">新增</v-btn>
                                     </v-col>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="showAddDish = false">取消</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="showAddDish = false">取消</v-btn>
                                     </v-col>
                                 </v-row>
                             </v-container>

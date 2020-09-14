@@ -84,7 +84,7 @@
     </v-navigation-drawer>
 
     <v-app>
-        <v-app-bar app color="indigo" dark>
+        <v-app-bar app color="#cc3737" dark>
             <v-app-bar-nav-icon @click.stop="drawer = !drawer"></v-app-bar-nav-icon>
             <v-toolbar-title>点餐系统</v-toolbar-title>
         </v-app-bar>
@@ -118,7 +118,7 @@
                     <div class="pa-2">已点 {{selectedDishCount}} 道菜, 总计 {{selectedDishPrice}} 元</div>
                 </v-col>
                 <v-col :cols="2">
-                    <v-btn color="primary" block v-on:click="postOrder()">下单</v-btn>
+                    <v-btn color="#ffc139" block v-on:click="postOrder()">下单</v-btn>
                 </v-col>
             </v-row>
 
@@ -143,7 +143,7 @@
                         <td>{{order.isDone}}</td>
                         <td>{{order.time}}</td>
                         <td>
-                            <v-btn color='primary' v-on:click='getOrderDetail(order.orderId)'>查看详情</v-btn>
+                            <v-btn color='#ffc139' v-on:click='getOrderDetail(order.orderId)'>查看详情</v-btn>
                         </td>
 
                        <!-- <td>
@@ -181,10 +181,10 @@
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="loginAccount()">登陆</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="loginAccount()">登陆</v-btn>
                                     </v-col>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="login.showLoginDialog = false">取消</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="login.showLoginDialog = false">取消</v-btn>
                                     </v-col>
                                 </v-row>
                             </v-container>
@@ -214,10 +214,10 @@
                                 </v-row>
                                 <v-row>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="registerAccount()">注册</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="registerAccount()">注册</v-btn>
                                     </v-col>
                                     <v-col cols="12" sm="6">
-                                        <v-btn color="primary" block v-on:click="register.showRegisterDialog = false">取消</v-btn>
+                                        <v-btn color="#ffc139" block v-on:click="register.showRegisterDialog = false">取消</v-btn>
                                     </v-col>
                                 </v-row>
                             </v-container>
@@ -246,7 +246,7 @@
                             <tr>
                                 <td>总金额: {{curOrderPrice()}}</td>
                                 <td>
-                                    <v-btn color="primary" v-on:click="showCurOrder = false">关闭</v-btn>
+                                    <v-btn color="#ffc139" v-on:click="showCurOrder = false">关闭</v-btn>
                                 </td>
                             </tr>
                             </tbody>
