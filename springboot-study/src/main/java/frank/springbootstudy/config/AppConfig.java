@@ -11,6 +11,7 @@ import java.util.Map;
 @Configuration
 public class AppConfig {
 
+
     @Bean
     public Map<Integer,String> test1() {
         Map<Integer, String> map = new HashMap<>();
@@ -25,6 +26,7 @@ public class AppConfig {
         map.put(2, "测试4下");
         return map;
     }
+
     @Bean
     public User user() {
         User user = new User();
