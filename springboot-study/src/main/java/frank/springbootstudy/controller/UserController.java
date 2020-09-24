@@ -6,6 +6,9 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.util.Map;
 
 @Controller//当前类型注册实例到容器中，并指定为web请求的处理
@@ -51,7 +54,13 @@ public class UserController {
 
     @RequestMapping(value = "/login",produces = MediaType.APPLICATION_JSON_UTF8_VALUE)
     @ResponseBody
-    public Object login() {
+    public Object login(User user,HttpServletRequest req ) {
+        //模拟数据库中校验用户名密码
+        if(!"abc".equals(user.getUsername())){
+            throw new RuntimeException("用户登录失败");
+        }
+        HttpSession session = req.getSession();
+        session.setAttribute("user",user);
         return user;
     }
     @RequestMapping("/m1")
@@ -86,9 +95,45 @@ public class UserController {
     }
     @RequestMapping("/test3")
     @ResponseBody
-    public Object test3(User user){//请求数据自动映射到参数类型的属性中
+    public Object test3(User user){//请求数据自动映射到参数类型的属性中：username=xxx&password=xxx
         System.out.println(user);
         return test1;
 
     }
+
+    @RequestMapping("/test4")
+    @ResponseBody
+    public Object test4(){
+        return null;
+    }
+
+    @RequestMapping("/test5")
+    @ResponseBody
+    public Object test5(){
+        return "ok";
+    }
+
+    @RequestMapping("/test6")
+    @ResponseBody
+    //http请求是基于Servlet的，Spring已经生成了request和response对象，可以直接在参数中使用
+    public Object test6(HttpServletRequest req, HttpServletResponse res){//spring自动将对象注入到参数
+        System.out.println("==========="+req.getParameter("username")+"====="+req.getParameter("password"));
+        return null;
+    }
+
+    @RequestMapping("/test7")
+    @ResponseBody
+    public Object test7 (@RequestBody User user){//请求数据类型为json时，解析时需要加注解
+        System.out.println("====="+user);
+        return null;
+    }
+
+
+    @RequestMapping("/test8")
+    @ResponseBody
+    public Object test8() {
+        throw new RuntimeException("数据库报错");
+
+    }
+
 }
