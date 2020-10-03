@@ -1,9 +1,9 @@
-package frank.springbootstudy.config;
+package frank.config;
 
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import frank.springbootstudy.config.interceptor.Logininterceptor;
-import frank.springbootstudy.model.User;
+import frank.config.interceptor.Logininterceptor;
+import frank.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

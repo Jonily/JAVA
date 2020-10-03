@@ -1,4 +1,4 @@
-package frank.springbootstudy.config;
+package frank.config;
 
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;

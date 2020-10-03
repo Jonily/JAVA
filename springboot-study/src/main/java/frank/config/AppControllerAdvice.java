@@ -1,6 +1,6 @@
-package frank.springbootstudy.config;
+package frank.config;
 
-import frank.springbootstudy.model.ResponseResult;
+import frank.model.ResponseResult;
 import org.springframework.core.MethodParameter;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;

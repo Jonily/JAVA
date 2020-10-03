@@ -1,7 +1,7 @@
-package frank.springbootstudy.config.interceptor;
+package frank.config.interceptor;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import frank.springbootstudy.model.ResponseResult;
+import frank.model.ResponseResult;
 import org.springframework.http.MediaType;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;

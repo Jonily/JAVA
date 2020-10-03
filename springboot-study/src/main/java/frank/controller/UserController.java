@@ -1,6 +1,6 @@
-package frank.springbootstudy.controller;
+package frank.controller;
 
-import frank.springbootstudy.model.User;
+import frank.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;

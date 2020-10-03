@@ -1,4 +1,4 @@
-package frank.springbootstudy.model;
+package frank.model;
 
 import lombok.Getter;
 import lombok.Setter;
