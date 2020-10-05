@@ -1,4 +1,4 @@
-package frank.config;
+package main.java.frank.config;
 
 import frank.model.ResponseResult;
 import org.springframework.core.MethodParameter;

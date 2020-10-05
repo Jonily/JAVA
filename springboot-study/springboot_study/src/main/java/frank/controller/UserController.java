@@ -1,4 +1,4 @@
-package frank.controller;
+package main.java.frank.controller;
 
 import frank.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
