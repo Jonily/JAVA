@@ -1,4 +1,4 @@
 package huangzhuolin.base;
 
-public interface BaseMapper {
+public interface BaseMapper<A extends BaseEntity>  {
 }
