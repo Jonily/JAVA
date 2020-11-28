@@ -24,9 +24,10 @@ public class Main {
         return ;
     }
       //是s<0或n<1则不能完成
-        if(s<0||(s>0&&n<1))
+        if(s<0||(s>0&&n<1)){
             return ;
+        }
     count(s-weight[n],n-1);
     count(s,n-1);
-}
+    }
 }
