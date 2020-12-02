@@ -20,8 +20,8 @@ public class Solution {
         }
         return list;
     }
-}
-/*import java.util.Arrays;
+}/*
+import java.util.Arrays;
 import java.util.PriorityQueue;
 import java.util.Scanner;
 
@@ -37,7 +37,7 @@ public class FindK {
             num[i] = Integer.parseInt(a[i]);
             k = num[a.length-1];
         }
-        Arrays.sort(num,,0,num.length-1);
+        Arrays.sort(num,0,num.length-1);
         for (int i = 0; i < k; i++) {
             System.out.print(num[i] +" ");
 
