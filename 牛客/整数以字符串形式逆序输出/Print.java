@@ -7,6 +7,7 @@ public class Print {
         Scanner in = new Scanner(System.in);
         int n = in.nextInt();
         String sb = "";
+
         sb = String.valueOf(n);
         StringBuffer bf = new StringBuffer(sb);
         bf.reverse();
