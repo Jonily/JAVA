@@ -6,7 +6,7 @@
 <mapper namespace="com.my.dao.UserMapper">
 
     <!--查询语句 id对应方法  resultType 结果集格式-->
-    <select id="getUserList" resultType="com.my.pojo.User">
+    <select id="getUserList" resultType="hello">
     select * from mybatis.user;
   </select>
 
@@ -18,11 +18,6 @@
         insert into mybatis.user (id,name,pwd) values(#{id},#{name},#{pwd});
     </insert>
 
-    <!--对象中的属性可以直接取出来
-    传递map的key-->
-    <insert id="addUser2" parameterType="map">
-        insert into mybatis.user (id,name,pwd) values(#{userId},#{userName},#{userPwd});
-    </insert>
 
     <update id="updateUser" parameterType="com.my.pojo.User">
         update mybatis.user set name =#{name},pwd=#{pwd} where id = #{id};
@@ -32,8 +27,6 @@
         delete from mybatis.user where id = #{id};
     </delete>
     
-    <select id="getUserLike" resultType="com.my.pojo.User">
-        select * from mybatis.user where name like "%"#{values}"%"
-    </select>
+
 
 </mapper>
