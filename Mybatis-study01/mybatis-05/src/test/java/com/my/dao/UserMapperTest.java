@@ -2,32 +2,31 @@ package com.my.dao;
 
 import com.my.pojo.User;
 import com.my.utils.MybatisUtils;
+
 import org.apache.ibatis.session.SqlSession;
+
 import org.junit.Test;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 
 public class UserMapperTest {
 
-
     @Test
-    public void getUserById(){
+    public void getUsers(){
         SqlSession sqlSession = MybatisUtils.getSqlSession();
 
         UserMapper mapper = sqlSession.getMapper(UserMapper.class);
-        User user = mapper.getUserById(3);
-        System.out.println(user);
+        List<User> userList  = mapper.getUsers();
+        for (User user : userList) {
+            System.out.println(user);
+        }
 
         sqlSession.close();
 
     }
-
-//    select * from mybatis.user where id = #{id}
-//    select id,name,pwd from mybatis.user where id=#{id}
-
-
-
 
 
 

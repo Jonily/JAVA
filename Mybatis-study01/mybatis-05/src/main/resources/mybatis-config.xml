@@ -7,12 +7,22 @@
 
     <!--  引入外部配置文件-->
     <properties resource="pp.properties"/>
-    
+
+    <settings>
+        <!--    标准的日志工厂-->
+
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+       <!-- <setting name="logImpl" value="LOG4J"/>-->
+
+    </settings>
+
+
     <!--给实体类起别名-->
     <typeAliases>
         <typeAlias type="com.my.pojo.User" alias="User"/>
         <!--<package name="com.my.pojo"/>-->
     </typeAliases>
+
 
 
     <environments default="development">
@@ -27,11 +37,9 @@
         </environment>
     </environments>
 
-    <!--每一个Mapper.xml都要在mybatis核心配置文件中注册-->
+    <!--绑定接口-->
     <mappers>
-        <!--<mapper resource="com/my/dao/UserMapper.xml"/>-->
-       <!-- <mapper class="com.my.dao.UserMapper"/>-->
-        <package name="com.my.dao"/>
+        <mapper class="com.my.dao.UserMapper"/>
     </mappers>
 
 </configuration>

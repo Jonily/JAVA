@@ -7,12 +7,20 @@
 
     <!--  引入外部配置文件-->
     <properties resource="pp.properties"/>
-    
+
+    <settings>
+       <!-- <setting name="logImpl" value="STDOUT_LOGGING"/>标准的日志工厂-->
+        <setting name="logImpl" value="LOG4J"/>
+
+    </settings>
+
+
     <!--给实体类起别名-->
     <typeAliases>
         <typeAlias type="com.my.pojo.User" alias="User"/>
         <!--<package name="com.my.pojo"/>-->
     </typeAliases>
+
 
 
     <environments default="development">
