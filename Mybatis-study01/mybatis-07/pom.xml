@@ -9,7 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>mybatis-05</artifactId>
+    <artifactId>mybatis-07</artifactId>
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
@@ -20,6 +20,5 @@
         </dependency>
 
     </dependencies>
-
 
 </project>
