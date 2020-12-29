@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="address" class="com.my.pojo.Address">
+        <property name="address" value="xian"/>
+    </bean>
+
+    <bean id="student" class="com.my.pojo.Student">
+        <!--1、普通值注入-->
+        <property name="name" value="奥特曼"/>
+
+        <!--2、bean注入 Address为引用类型-->
+        <property name="address" ref="address"/>
+
+
+        <!--3、数组注入-->
+        <property name="books">
+            <array>
+                <value>红楼梦</value>
+                <value>三国</value>
+                <value>水浒</value>
+                <value>西游记</value>
+            </array>
+        </property>
+
+        <!--4、List注入-->
+        <property name="hobbies">
+            <list>
+                <value>听歌</value>
+                <value>看电影</value>
+                <value>打篮球</value>
+            </list>
+        </property>
+
+        <!--5、Map注入-->
+        <property name="card">
+            <map>
+                <entry key="身份证" value="7758521461566"/>
+                <entry key="学生证" value="123456789"/>
+            </map>
+        </property>
+
+        <!--6、Set注入-->
+        <property name="games">
+            <set>
+                <value>王者荣耀</value>
+                <value>刺激战场</value>
+            </set>
+        </property>
+
+        <!--7、null注入-->
+        <property name="wife">
+            <null/>
+        </property>
+
+        <!--8、Properties注入-->
+        <property name="info">
+            <props>
+                <prop key="学号">12345646</prop>
+                <prop key="班级">网络182</prop>
+            </props>
+        </property>
+
+
+
+
+
+
+
+
+    </bean>
+
+</beans>

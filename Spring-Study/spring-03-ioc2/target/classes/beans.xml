@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!--使用Spring创建对象，在Spring中这些都称为bean
+
+    类型 变量名 = new 类型（）;
+    Hello hello = new Hello();
+
+    id = 变量名
+    class = new 的对象
+    property 相当于给对象中的某个属性设置一个值-->
+
+    <!--根据下标构造-->
+    <!--<bean id="user" class="com.my.pojo.User">
+        <constructor-arg index="0" value="啦啦啦啦啦"/>
+    </bean>-->
+
+    <!--根据参数类型匹配构造-->
+  <!--  <bean id="user" class="com.my.pojo.User">
+        <constructor-arg type="java.lang.String" value="hahahaha"  />
+        <constructor-arg type="java.lang.String" value="1234"/>
+    </bean>-->
+
+   <!-- 第三种直接根据参数名构造-->
+ <!--   <bean id="user" class="com.my.pojo.User">
+        <constructor-arg name="name" value="hehe"/>
+        <constructor-arg name="pwd" value="12346"/>
+
+    </bean>
+-->
+
+   <!-- <alias name="user" alias="1234654654"/>-->
+
+    <bean id="user" class="com.my.pojo.User" name="4654654611,111">
+        <constructor-arg name="name" value="hehe"/>
+        <constructor-arg name="pwd" value="12346"/>
+
+    </bean>
+
+
+</beans>
