@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<!--核心配置文件-->
+<configuration>
+
+    <!--p配置数据源交给Spring-->
+    <!--日志-->
+    <settings>
+        <setting name="logImpl" value="STDOUT_LOGGING"/>
+    </settings>
+
+    <!--给实体类起别名-->
+    <typeAliases>
+        <package name="com.my.pojo"/>
+    </typeAliases>
+
+    <!--每一个Mapper.xml都要在mybatis核心配置文件中注册-->
+    <mappers>
+        <mapper class="com.my.dao.BookMapper"/>
+    </mappers>
+
+</configuration>
