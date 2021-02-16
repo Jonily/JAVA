@@ -252,3 +252,194 @@ public static void bubbleSort(int[] array){
 		}
 	}
 }
+public static void HeapSort(int[] array){
+	createHeap(array);
+	int heapSize = array.length;
+	for(int i = 0;i<array.length;i++){
+		swap(array,heapSize-1,0);
+		heapSize--;
+		shfitDown(array,heapSize,0);
+	}
+}
+public static void createHeap(int [] array){
+	for(int i = (array.length-1-1)/2;i>=0;i--){
+		shfitDown(array,array.length,i);
+	}
+}
+public static void shfitDown(int[] array,int size,int index){
+	int parent = index;
+	int child = 2*parent+1;
+	while(child < size){
+		if(child+1<size && array[child+1]>array[child]){
+			child ++;
+		}
+		if(array[parent] < array[child]){
+			swap(array,parent,child);
+		}else{
+			break;
+		}
+		parent = child;
+		child = 2*parent+1
+	}
+}
+public static void quickSort(int[] array){
+	quickHelper(array,0,array.length-1);
+}
+private static void quickHelper(int[] arrya,int left,int right){
+	if(left>=right){
+		return;
+	}
+	int index = find(array,left,right);
+
+	quickHelper(array,left,index-1);
+	quickHelper(array,index+1,right);
+
+
+}
+public static void find(int[] array,int left,int right){
+	int v = array[right];
+	int i = left;
+	int j = right;
+	while(i<j){
+		while(i<j && array[i]<=v){
+			i++;
+		}
+		while(i<j && array[j]>v){
+			j--;
+		}
+		if(i<j){
+			swap(array,i,j);
+		}
+	}
+	swap(i,right,array);
+	return i;
+}
+
+
+public static void quickSort(int[] array){
+	quickHelper(array,0,array.length);
+}
+public static void quickHelper(int[] array,int left,int right){
+	if(left >= right){
+		return;
+	}
+	int index = find(array,left,right);
+	quickHelper(array,left,index-1);
+	quickHelper(array,index+1,right);
+}
+
+public static quickHelper(int[] array,int left,int right){
+	int v = array[right];
+	int i = left;
+	int j = right;
+	while(i<j){
+		while(i<j && array[i]<=v){
+			i++;
+		}
+		while(i<j && array[i]>v){
+			j--;
+		}
+
+		if(i<j){
+			swap(array,i,j);
+		}
+	}
+	swap(array,i,right);
+	return i;
+}
+public static void mergSort(int[] array){
+	mergHelp(array,0,array.length);
+}
+public static mergHelp(int[] array,int left,int right){
+	if((right - left)<=1){
+		return;
+	}
+
+	int mid = (left+right)/2;
+	mergHelp(array,left,mid);
+	mergHelp(array,mid,right);
+
+	merg(array,left,mid,right);
+}
+
+public static void merg(int [] array,int left,int mid,int right){
+	int i = left;
+	int j = mid;
+	int[] out = new int[right-left];
+	int outIndex = 0;
+
+	while(i<mid && j<right){
+		if(array[i] <= array[j]){
+		   out[outIndex] = array[i];
+		   i++;
+		   outIndex++;
+		}else{
+			oout[ountIndex] = array[j];
+			j++;
+			outIndex++;
+
+		}
+	}
+
+	while(i<mid){
+		out[outIndex] = array[i];
+		i++;
+		outIndex++;
+
+	}
+	while(j<right){
+		out[outIndex] = array[j];
+		j++;
+		outIndex++;
+
+	}
+	for(int i = 0;i<out.length;i++){
+		array[left+i] = out[i];
+	}
+}
+public static void Sort(int[] array){
+	mergHelp(array,0,array.length);
+
+}
+public static void mergHelp(int[] array,int left,int right){
+	if((right - left)<=1){
+		return;
+	}
+	int mid = (left+right)/2;
+	mergHelp(array,left,mid);
+	mergHelp(array,mid,right);
+
+	merg(array,left,mid,right);
+}
+public static void merg(int[] array,int left,int mid,int right){
+	int [] out = new int[right-left];
+	int i = left;
+	int j = mid;
+	int outIndex = 0;
+	while(i<mid && j<right){
+		if(array[i] <= array[j]){
+			out[outIndex] = array[i];
+			outIndex++;
+			i++;
+		}else{
+			out[outIndex] = array[j];
+			outIndex++;
+			j++;
+
+		}
+	}
+	while(i<mid){
+		out[outIndex] = array[i];
+		i++;
+		outIndex++;
+	}
+	while(j<right){
+		out[outIndex] = array[j];
+		j++;
+		outIndex++;
+	}
+	for(int i =0;i<out.length;i++){
+		array[left+i]=out[i];
+	}
+
+}
