@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.dao.MusicMapper">
+    <!--1、查询全部歌单-->
+    <select id="findMusic" resultType="Music">
+        select * from musicbox.music ;
+    </select>
+
+    <!--2、根据id查找音乐-->
+    <select id="findMusicById" resultType="Music">
+        select * from musicbox.music where id = #{id};
+
+    </select>
+
+    <!--3、根据关键字查找音乐歌单-->
+    <select id="findMusicByStr" resultType="Music">
+        select *  from musicbox.music where title like concat('%',#{str},'%');
+
+    </select>
+    <!--4、上传音乐-->
+    <insert id="AddMusic" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="Music">
+        insert into musicbox.music
+        values (#{id},#{title},#{singer},#{time},#{url});
+    </insert>
+    <!--5、通过ID删除歌曲-->
+    <delete id="deleteMusicById" parameterType="int">
+        delete from musicbox.music where id = #{id};
+    </delete>
+    <!--6、查看喜欢音乐表是否有该ID歌曲-->
+    <select id="findLoverMusicById" resultType="Music">
+        select * from musicbox.lovemusic where musicId = #{musicId};
+    </select>
+    <!--7、删除服务器上的音乐时，同时在我喜欢的列表的数据库中进行删除-->
+    <delete id="removeLoveMusicDelete" parameterType="int">
+        delete from musicbox.lovemusic where musicId = #{musicId};
+    </delete>
+    <!--8、添加喜欢的音乐的时候，需要先判断该音乐是否存在-->
+    <select id="findLoveMusicByMusicIdAndUserId" resultType="Music">
+        select * from musicbox.lovemusic where musicId = #{musicId} and userId = #{userId} ;
+    </select>
+
+    <!--9、添加音乐到“喜欢”列表中-->
+    <insert id="insertLoveMusic" parameterType="Music">
+        insert into musicbox.lovemusic (userId,musicId)
+        values (#{userId},#{musicId});
+    </insert>
+    <!--10、移除喜欢的音乐-->
+    <delete id="removeLoveMusic" parameterType="int">
+        delete from musicbox.lovemusic where userId = #{userId} and musicId = #{musicId};
+    </delete>
+    <!--11、查询用户喜欢的全部歌-->
+    <select id="findLoveMusicByUserId" resultType="Music" >
+        select musicbox.music.id,musicbox.music.singer,musicbox.music.time,musicbox.music.title,musicbox.music.url from
+        musicbox.lovemusic,musicbox.music  where lovemusic.musicId = music.id and lovemusic.userId = #{userId}
+    </select>
+
+    <!--12、根据关键字查询喜欢的歌单-->
+    <select id="findLoveMusicByStr" resultType="Music">
+
+          select musicbox.music.id,musicbox.music.singer,musicbox.music.time,musicbox.music.title,musicbox.music.url from
+        musicbox.lovemusic,musicbox.music  where lovemusic.musicId = music.id and lovemusic.userId = #{userId} and title like concat('%',#{str},'%');
+    </select>
+
+
+
+</mapper>

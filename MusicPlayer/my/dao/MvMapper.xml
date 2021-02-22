@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.my.dao.MvMapper">
+    <!--1、查询全部歌单-->
+    <select id="findMv" resultType="Mv">
+        select * from musicbox.mv ;
+
+    </select>
+
+    <!--2、根据id查找mv-->
+    <select id="findMvById" resultType="Mv">
+        select * from musicbox.mv where id = #{id};
+
+    </select>
+
+    <!--3、根据关键字查找mv歌单-->
+    <select id="findMvByStr" resultType="Mv">
+        select *  from musicbox.mv where title like concat('%',#{str},'%');
+
+    </select>
+    <!--4、上传mv-->
+    <insert id="AddMv" useGeneratedKeys="true" keyProperty="id" keyColumn="id" parameterType="Mv">
+        insert into musicbox.mv values (#{id},#{title},#{singer},#{time},#{url});
+    </insert>
+    <!--5、通过ID删除mv-->
+    <delete id="deleteMvById" parameterType="int">
+        delete from musicbox.mv where id = #{id};
+    </delete>
+    <!--6、查看喜欢mv表是否有该IDmv-->
+    <select id="findLoverMvById" resultType="Mv">
+        select * from musicbox.lovemv where mvId = #{mvId};
+    </select>
+    <!--7、删除服务器上的mv时，同时在我喜欢的列表的数据库中进行删除-->
+    <delete id="removeLoveMvDelete" parameterType="int">
+        delete from musicbox.lovemv where mvId = #{mvId};
+    </delete>
+    <!--8、添加喜欢的mv的时候，需要先判断该音乐是否存在-->
+    <select id="findLoveMvByMvIdAndUserId" resultType="Mv">
+        select * from musicbox.lovemv where mvId = #{mvId} and userId = #{userId} ;
+    </select>
+
+    <!--9、添加mv到“喜欢”列表中-->
+    <insert id="insertLoveMv" parameterType="Mv">
+        insert into musicbox.lovemv (userId,mvId)
+        values (#{userId},#{mvId});
+    </insert>
+    <!--10、移除喜欢的mv-->
+    <delete id="removeLoveMv" parameterType="int">
+        delete from musicbox.lovemv where userId = #{userId} and mvId = #{mvId};
+    </delete>
+    <!--11、查询用户喜欢的全部mv-->
+    <select id="findLoveMvByUserId" resultType="Mv" >
+        select musicbox.mv.id,musicbox.mv.singer,musicbox.mv.time,musicbox.mv.title,musicbox.mv.url from
+          musicbox.lovemv,musicbox.mv  where lovemv.mvId = mv.id and lovemv.userId = #{userId}
+    </select>
+
+    <!--12、根据关键字查询喜欢的mv-->
+    <select id="findLoveMvByStr" resultType="Mv">
+
+        select musicbox.mv.id,musicbox.mv.singer,musicbox.mv.time,musicbox.mv.title,musicbox.mv.url from
+        musicbox.lovemv,musicbox.mv  where lovemv.mvId = mv.id and lovemv.userId = #{userId} and title like concat('%',#{str},'%');
+    </select>
+
+
+
+</mapper>
